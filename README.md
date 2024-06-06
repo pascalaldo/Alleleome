@@ -94,7 +94,7 @@ Before installing Alleleome, it's recommended to create a virtual environment. T
 
 2. Navigate to the Alleleome directory:
    ```
-   cd Core-Alleleome
+   cd Alleleome
    ```
 3. Activate the virtual environment as instructed above.
 
@@ -105,17 +105,10 @@ Before installing Alleleome, it's recommended to create a virtual environment. T
 
 ## Usage
 
-### Test Sample Data Run
-Run Alleleome with sample data using:
-   ```
-   Alleleome
-   ```
-Refer to the `sample_data` directory for output organization and details.
-
 ### Running Your Species Core Genes
 To analyze your species data:
    ```
-   Alleleome --path1 path/to/pangenome_alignments --path2 path/to/alleleome
+   Alleleome Core --path1 path/to/pangenome_alignments --path2 path/to/alleleome
    ```
 
 ### Custom parameters

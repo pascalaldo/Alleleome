@@ -19,7 +19,7 @@ def process_sequences(pangenome_alignments_dir_path, alleleome_dir_path):
         alleleome_dir_path = Path(alleleome_dir_path)
         df = pd.read_csv(
             alleleome_dir_path
-            / "core_alleles_with_length_less_than_2std_less_than_mean_length.csv"
+            / "alleles_with_length_less_than_2std_less_than_mean_length.csv"
         )
         gene_locus_list = set(df["Gene"].to_list())
         locus_list = df["Locus_tag"].to_list()

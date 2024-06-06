@@ -6,7 +6,7 @@ from Bio import SeqIO
 
 
 def analyze_gene_lengths(
-    pangenome_alignments_dir_path, alleleome_dir_path, pangene_summary_csv=None
+    pangenome_alignments_dir_path, alleleome_dir_path, pangene_summary_csv=None, pan_core="Core"
 ):
     try:
         logging.info("Starting analyze_gene_lengths in QCQA_2")
@@ -25,15 +25,20 @@ def analyze_gene_lengths(
             pangene_summary_csv.is_file()
         ), f"Cannot find pangene_summary table at {pangene_summary_csv}"
 
-        # Extract core genes
+        # Extract pan/core genes
         df = pd.read_csv(pangene_summary_csv)
-        core_gene_list = (
-            df["pangenome_class_2"].eq("Core").groupby(df["Gene"]).any()
-        ).pipe(lambda x: x.index[x].tolist())
+        if pan_core == "Core":
+            gene_list = (
+                df["pangenome_class_2"].eq("Core").groupby(df["Gene"]).any()
+            ).pipe(lambda x: x.index[x].tolist())
+        elif pan_core == "Pan":
+            gene_list=df['Gene'].tolist()
+        else:
+            raise ValueError("Unrecognized alleleome type, should be Core or Pan.")
 
         nuc_data = []
 
-        for k in core_gene_list:
+        for k in gene_list:
             s = 0
             gene_length = []
             i = 0
@@ -58,14 +63,14 @@ def analyze_gene_lengths(
         new_df = nuc_df.groupby(["Gene"]).Length_of_allele.agg({"mean", "std"})
         new_df["mean"] = new_df["mean"].apply(lambda x: round(x, 0))
         new_df["std"] = new_df["std"].apply(lambda x: round(x, 2))
-        new_df.to_csv(alleleome_dir_path / "core_nuc_alleles_with_mean_std.csv")
+        new_df.to_csv(alleleome_dir_path / "nuc_alleles_with_mean_std.csv")
         df2 = nuc_df.merge(new_df, left_on=["Gene"], right_index=True)
-        df2.to_csv(alleleome_dir_path / "core_nuc_alleles_with_locus_mean_std.csv")
+        df2.to_csv(alleleome_dir_path / "nuc_alleles_with_locus_mean_std.csv")
         df2["mean_2std"] = df2["mean"] - 2 * df2["std"]
         df3 = df2[df2.Length_of_allele < df2.mean_2std]
         df3.to_csv(
             alleleome_dir_path
-            / "core_alleles_with_length_less_than_2std_less_than_mean_length.csv"
+            / "alleles_with_length_less_than_2std_less_than_mean_length.csv"
         )
         logging.info("Completed analyze_gene_lengths in QCQA_2")
     except Exception as e:

@@ -76,7 +76,7 @@ table = {
 
 
 def codon_mut(
-    pangenome_alignments_dir_path, alleleome_dir_path, pangene_summary_csv=None
+    pangenome_alignments_dir_path, alleleome_dir_path, pangene_summary_csv=None, pan_core="Core"
 ):
     try:
         logging.info("Starting codon_mut in codon_mutations")
@@ -86,20 +86,26 @@ def codon_mut(
         alleleome_dir_path = Path(alleleome_dir_path)
         alleleome_dir_path.mkdir(parents=True, exist_ok=True)
 
-        if pangene_summary_csv is None:
-            pangene_summary_csv = alleleome_dir_path / "df_pangene_summary_v2.csv"
+        if pan_core == "Core":
+            if pangene_summary_csv is None:
+                pangene_summary_csv = alleleome_dir_path / "df_pangene_summary_v2.csv"
+            else:
+                pangene_summary_csv = Path(pangene_summary_csv)
+
+            assert (
+                pangene_summary_csv.is_file()
+            ), f"Cannot find pangene_summary table at {pangene_summary_csv}"
+
+            df = pd.read_csv(pangene_summary_csv)
+
+            gene_list = (
+                df["pangenome_class_2"].eq("Core").groupby(df["Gene"]).any()
+            ).pipe(lambda x: x.index[x].tolist())
+        elif pan_core == "Pan":
+            df = pd.read_csv(os.path.join(alleleome_dir_path,'nuc_genes_present_in_above_5_percent_of_strains.csv'))
+            gene_list = df['Gene'].tolist()
         else:
-            pangene_summary_csv = Path(pangene_summary_csv)
-
-        assert (
-            pangene_summary_csv.is_file()
-        ), f"Cannot find pangene_summary table at {pangene_summary_csv}"
-
-        df = pd.read_csv(pangene_summary_csv)
-
-        core_gene_list = (
-            df["pangenome_class_2"].eq("Core").groupby(df["Gene"]).any()
-        ).pipe(lambda x: x.index[x].tolist())
+            raise ValueError("Unrecognized alleleome type, should be Core or Pan.")
 
         for blast_out_file in core_gene_list:
             blast_output_file_path = (
@@ -181,7 +187,7 @@ def codon_mut(
                             aa_q = "X"
         gene_syno_nonsyno_df = pd.DataFrame(mutation_data)
         gene_syno_nonsyno_df.to_csv(
-            os.path.join(alleleome_dir_path, "pan_core_gene_syno_non_syno_df.csv")
+            os.path.join(alleleome_dir_path, "pan_gene_syno_non_syno_df.csv")
         )
 
         logging.info("Completed codon_mut in codon_mutations")

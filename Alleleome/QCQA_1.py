@@ -6,7 +6,7 @@ from Bio import SeqIO
 
 
 def process_nucleotide_sequences(
-    pangenome_alignments_dir_path, alleleome_dir_path, pangene_summary_csv=None
+    pangenome_alignments_dir_path, alleleome_dir_path, pangene_summary_csv=None, pan_core="Core"
 ):
     """
     Processes nucleotide sequences to compute the number of strains and gene length.
@@ -30,11 +30,16 @@ def process_nucleotide_sequences(
         ), f"Cannot find pangene_summary table at {pangene_summary_csv}"
 
         df = pd.read_csv(pangene_summary_csv)
-        core_gene_list = df[df["pangenome_class_2"] == "Core"]["Gene"].unique().tolist()
+        if pan_core == "Core":
+            gene_list = df[df["pangenome_class_2"] == "Core"]["Gene"].unique().tolist()
+        elif pan_core == "Pan":
+            gene_list = (df['pangenome_class_2'].groupby(df['Gene']).any()).pipe(lambda x: x.index[x].tolist())
+        else:
+            raise ValueError("Unrecognized alleleome type, should be Core or Pan.")
 
         genes_df = pd.DataFrame()
 
-        for gene in core_gene_list:
+        for gene in gene_list:
             total_length = 0
             count = 0
             nuc_allele_file = (
@@ -64,7 +69,7 @@ def process_nucleotide_sequences(
         df1 = genes_df[genes_df["greater_than_5%"]]
         df1.to_csv(
             alleleome_dir_path
-            / "Final_nuc_genes_present_in_above_5_percent_of_strains.csv"
+            / "nuc_genes_present_in_above_5_percent_of_strains.csv"
         )
         logging.info("Completed process_nucleotide_sequences in QCQA_1")
     except Exception as e:

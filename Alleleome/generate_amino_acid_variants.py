@@ -145,7 +145,7 @@ assert _get_consecutive_pos_l(mut_pos_l) == [[1], [4, 5], [7, 8, 9], [22]]
 
 
 def generate_amino_acid_vars(
-    pangenome_alignments_dir_path, alleleome_dir_path, pangene_summary_csv=None
+    pangenome_alignments_dir_path, alleleome_dir_path, pangene_summary_csv=None, pan_core="Core"
 ):
     try:
         logging.info(
@@ -155,24 +155,29 @@ def generate_amino_acid_vars(
         alleleome_dir_path = Path(alleleome_dir_path)
         alleleome_dir_path.mkdir(parents=True, exist_ok=True)
 
-        if pangene_summary_csv is None:
-            pangene_summary_csv = alleleome_dir_path / "df_pangene_summary_v2.csv"
+        if pan_core == "Core":
+            if pangene_summary_csv is None:
+                pangene_summary_csv = alleleome_dir_path / "df_pangene_summary_v2.csv"
+            else:
+                pangene_summary_csv = Path(pangene_summary_csv)
+
+            assert (
+                pangene_summary_csv.is_file()
+            ), f"Cannot find pangene_summary table at {pangene_summary_csv}"
+
+            df = pd.read_csv(pangene_summary_csv)
+        
+            aa_query_list = (
+                df["pangenome_class_2"].eq("Core").groupby(df["Gene"]).any()
+            ).pipe(lambda x: x.index[x].tolist())
+        elif pan_core == "Pan":
+            df=pd.read_csv(os.path.join(alleleome_dir_path,'nuc_genes_present_in_above_5_percent_of_strains.csv'))
+            aa_query_list=df['Gene'].tolist()
         else:
-            pangene_summary_csv = Path(pangene_summary_csv)
-
-        assert (
-            pangene_summary_csv.is_file()
-        ), f"Cannot find pangene_summary table at {pangene_summary_csv}"
-
-        df = pd.read_csv(pangene_summary_csv)
-
-        core_aa_query_list = (
-            df["pangenome_class_2"].eq("Core").groupby(df["Gene"]).any()
-        ).pipe(lambda x: x.index[x].tolist())
-
+            raise ValueError("Unrecognized alleleome type, should be Core or Pan.")
         all_mutations = []
 
-        for blast_output_file in core_aa_query_list:
+        for blast_output_file in aa_query_list:
             blast_file_name = (
                 pangenome_alignments_dir_path / blast_output_file / "output"
             )
