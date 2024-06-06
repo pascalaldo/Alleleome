@@ -47,7 +47,7 @@ def nucleotide_seq_align(
             )
             blast_path = "blastn"
 
-        for r in range(len(a_query_list)):
+        for r in range(len(na_query_list)):
             query = na_query_list[r]
             if pd.isnull(query) is False:
                 out_file_name = (
