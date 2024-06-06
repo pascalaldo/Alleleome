@@ -107,7 +107,7 @@ def codon_mut(
         else:
             raise ValueError("Unrecognized alleleome type, should be Core or Pan.")
 
-        for blast_out_file in core_gene_list:
+        for blast_out_file in gene_list:
             blast_output_file_path = (
                 pangenome_alignments_dir_path / blast_out_file / "output"
             )

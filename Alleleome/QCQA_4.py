@@ -17,7 +17,7 @@ def process_genes(
     - alleleome_path: Path to the directory containing the gene data CSV files.
     """
     try:
-        logging.info("Starting process_core_genes in QCQA_4")
+        logging.info("Starting process_genes in QCQA_4")
         pangenome_alignments_dir_path = Path(pangenome_alignments_dir_path)
         # Read genes data
         alleleome_dir_path = Path(alleleome_dir_path)
@@ -67,7 +67,7 @@ def process_genes(
             # Create output directory for the gene
             output_path = pangenome_alignments_dir_path / gene / "output"
             output_path.mkdir(exist_ok=True, parents=True)
-        logging.info("Completed process_core_genes in QCQA_4")
+        logging.info("Completed process_genes in QCQA_4")
     except Exception as e:
-        logging.error(f"Error in process_core_genes in QCQA_4: {e}")
+        logging.error(f"Error in process_genes in QCQA_4: {e}")
         raise

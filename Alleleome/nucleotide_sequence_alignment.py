@@ -47,8 +47,8 @@ def nucleotide_seq_align(
             )
             blast_path = "blastn"
 
-        for r in range(len(core_na_query_list)):
-            query = core_na_query_list[r]
+        for r in range(len(a_query_list)):
+            query = na_query_list[r]
             if pd.isnull(query) is False:
                 out_file_name = (
                     pangenome_alignments_dir_path

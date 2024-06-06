@@ -29,8 +29,8 @@ def test_process_sequences():
     QCQA_3.process_sequences(path1, path2)
 
 
-def test_process_core_genes():
-    QCQA_4.process_core_genes(path1, path2, pangene_summary_csv=table)
+def test_process_genes():
+    QCQA_4.process_genes(path1, path2, pangene_summary_csv=table)
 
 
 def test_build_consensus():
