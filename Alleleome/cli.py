@@ -86,7 +86,7 @@ def main():
             args.path1, args.path2, pangene_summary_csv=args.table, pan_core=args.type
         )
         QCQA_3.process_sequences(args.path1, args.path2)
-        QCQA_4.process_core_genes(
+        QCQA_4.process_genes(
             args.path1, args.path2, pangene_summary_csv=args.table, pan_core=args.type
         )
         build_consensus_sequence.build_consensus(
