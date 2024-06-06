@@ -42,6 +42,7 @@ def process_nucleotide_sequences(
             )
 
             with open(nuc_allele_file, "r") as file:
+                gene_df = None
                 for seq_record in SeqIO.parse(file, "fasta"):
                     gene_length = len(seq_record)
                     count += 1
