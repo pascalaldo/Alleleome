@@ -1,0 +1,363 @@
+<?xml version="1.0"?>
+<!DOCTYPE BlastOutput PUBLIC "-//NCBI//NCBI BlastOutput/EN" "http://www.ncbi.nlm.nih.gov/dtd/NCBI_BlastOutput.dtd">
+<BlastOutput>
+  <BlastOutput_program>blastp</BlastOutput_program>
+  <BlastOutput_version>BLASTP 2.15.0+</BlastOutput_version>
+  <BlastOutput_reference>Stephen F. Altschul, Thomas L. Madden, Alejandro A. Sch&amp;auml;ffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J. Lipman (1997), &quot;Gapped BLAST and PSI-BLAST: a new generation of protein database search programs&quot;, Nucleic Acids Res. 25:3389-3402.</BlastOutput_reference>
+  <BlastOutput_db></BlastOutput_db>
+  <BlastOutput_query-ID>Query_1</BlastOutput_query-ID>
+  <BlastOutput_query-def>PHLFEKDO_15590 1-deoxy-D-xylulose-5-phosphate synthase | GCA_000014405.1</BlastOutput_query-def>
+  <BlastOutput_query-len>111</BlastOutput_query-len>
+  <BlastOutput_param>
+    <Parameters>
+      <Parameters_matrix>BLOSUM62</Parameters_matrix>
+      <Parameters_expect>10</Parameters_expect>
+      <Parameters_gap-open>11</Parameters_gap-open>
+      <Parameters_gap-extend>1</Parameters_gap-extend>
+      <Parameters_filter>F</Parameters_filter>
+    </Parameters>
+  </BlastOutput_param>
+<BlastOutput_iterations>
+<Iteration>
+  <Iteration_iter-num>1</Iteration_iter-num>
+  <Iteration_query-ID>Query_1</Iteration_query-ID>
+  <Iteration_query-def>PHLFEKDO_15590 1-deoxy-D-xylulose-5-phosphate synthase | GCA_000014405.1</Iteration_query-def>
+  <Iteration_query-len>111</Iteration_query-len>
+<Iteration_hits>
+<Hit>
+  <Hit_num>1</Hit_num>
+  <Hit_id>dxs_2</Hit_id>
+  <Hit_def>dxs_2</Hit_def>
+  <Hit_accession>Subject_1</Hit_accession>
+  <Hit_len>583</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>196.438</Hsp_bit-score>
+      <Hsp_score>498</Hsp_score>
+      <Hsp_evalue>1.00509e-65</Hsp_evalue>
+      <Hsp_query-from>6</Hsp_query-from>
+      <Hsp_query-to>111</Hsp_query-to>
+      <Hsp_hit-from>68</Hsp_hit-from>
+      <Hsp_hit-to>173</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>95</Hsp_identity>
+      <Hsp_positive>95</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>106</Hsp_align-len>
+      <Hsp_qseq>PATKSSGTSSHQTYPHKMLTGRAYAWLDPEAYGKVTPYTNPDESPYDYYAVGHTSTSISLATGMAKARDLLGGSERIMAVIGDDSLTGGMAYEGLNNAALEKGNLV</Hsp_qseq>
+      <Hsp_hseq>PXXKXXXXXSHQTYPHKMLTGRAYAWLDPEAYGKXTPYTNPDESPYDYYAVGHTSTSISLAXGMAKARDLLGGSERIMAVIGXGSLTGGMAYEGLNNAALEKGNLV</Hsp_hseq>
+      <Hsp_midline>P  K     SHQTYPHKMLTGRAYAWLDPEAYGK TPYTNPDESPYDYYAVGHTSTSISLA GMAKARDLLGGSERIMAVIG  SLTGGMAYEGLNNAALEKGNLV</Hsp_midline>
+    </Hsp>
+    <Hsp>
+      <Hsp_num>2</Hsp_num>
+      <Hsp_bit-score>29.261</Hsp_bit-score>
+      <Hsp_score>64</Hsp_score>
+      <Hsp_evalue>2.30504e-05</Hsp_evalue>
+      <Hsp_query-from>24</Hsp_query-from>
+      <Hsp_query-to>85</Hsp_query-to>
+      <Hsp_hit-from>249</Hsp_hit-from>
+      <Hsp_hit-to>308</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>25</Hsp_identity>
+      <Hsp_positive>34</Hsp_positive>
+      <Hsp_gaps>6</Hsp_gaps>
+      <Hsp_align-len>64</Hsp_align-len>
+      <Hsp_qseq>LTGRAY--AWLDPEAYGKVTPYTNPDESPYDYYAVGHTSTSISLATGMAKARDLLGGSERIMAV</Hsp_qseq>
+      <Hsp_hseq>LKGKGYQPAIEDEEKHHWVRPFNLSDDSPKNITA-GPTPAEIAVKT-VASAID--GGQENIMAI</Hsp_hseq>
+      <Hsp_midline>L G+ Y  A  D E +  V P+   D+SP +  A G T   I++ T +A A D  GG E IMA+</Hsp_midline>
+    </Hsp>
+    <Hsp>
+      <Hsp_num>3</Hsp_num>
+      <Hsp_bit-score>17.3198</Hsp_bit-score>
+      <Hsp_score>33</Hsp_score>
+      <Hsp_evalue>0.270386</Hsp_evalue>
+      <Hsp_query-from>35</Hsp_query-from>
+      <Hsp_query-to>71</Hsp_query-to>
+      <Hsp_hit-from>545</Hsp_hit-from>
+      <Hsp_hit-to>580</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>9</Hsp_identity>
+      <Hsp_positive>19</Hsp_positive>
+      <Hsp_gaps>1</Hsp_gaps>
+      <Hsp_align-len>37</Hsp_align-len>
+      <Hsp_qseq>EAYGKVTPYTNPDESPYDYYAVGHTSTSISLATGMAK</Hsp_qseq>
+      <Hsp_hseq>KTFGEKREYTDVDQS-YDQILVRNQLTAEQIVASVKQ</Hsp_hseq>
+      <Hsp_midline>+ +G+   YT+ D+S YD   V +  T+  +   + +</Hsp_midline>
+    </Hsp>
+    <Hsp>
+      <Hsp_num>4</Hsp_num>
+      <Hsp_bit-score>15.3938</Hsp_bit-score>
+      <Hsp_score>28</Hsp_score>
+      <Hsp_evalue>0.975172</Hsp_evalue>
+      <Hsp_query-from>51</Hsp_query-from>
+      <Hsp_query-to>75</Hsp_query-to>
+      <Hsp_hit-from>214</Hsp_hit-from>
+      <Hsp_hit-to>238</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>6</Hsp_identity>
+      <Hsp_positive>12</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>25</Hsp_align-len>
+      <Hsp_qseq>YDYYAVGHTSTSISLATGMAKARDL</Hsp_qseq>
+      <Hsp_hseq>FDYRYVADGNDLESMINAFSEIRDV</Hsp_hseq>
+      <Hsp_midline>+DY  V   +   S+    ++ RD+</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+</Iteration_hits>
+  <Iteration_stat>
+    <Statistics>
+      <Statistics_db-num>0</Statistics_db-num>
+      <Statistics_db-len>0</Statistics_db-len>
+      <Statistics_hsp-len>24</Statistics_hsp-len>
+      <Statistics_eff-space>48633</Statistics_eff-space>
+      <Statistics_kappa>0.041</Statistics_kappa>
+      <Statistics_lambda>0.267</Statistics_lambda>
+      <Statistics_entropy>0.14</Statistics_entropy>
+    </Statistics>
+  </Iteration_stat>
+</Iteration>
+<Iteration>
+  <Iteration_iter-num>2</Iteration_iter-num>
+  <Iteration_query-ID>Query_2</Iteration_query-ID>
+  <Iteration_query-def>MAAAAKME_15240 1-deoxy-D-xylulose-5-phosphate synthase | GCA_000056065.1</Iteration_query-def>
+  <Iteration_query-len>83</Iteration_query-len>
+<Iteration_hits>
+<Hit>
+  <Hit_num>1</Hit_num>
+  <Hit_id>dxs_2</Hit_id>
+  <Hit_def>dxs_2</Hit_def>
+  <Hit_accession>Subject_1</Hit_accession>
+  <Hit_len>583</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>160.999</Hsp_bit-score>
+      <Hsp_score>406</Hsp_score>
+      <Hsp_evalue>6.97011e-53</Hsp_evalue>
+      <Hsp_query-from>2</Hsp_query-from>
+      <Hsp_query-to>81</Hsp_query-to>
+      <Hsp_hit-from>103</Hsp_hit-from>
+      <Hsp_hit-to>182</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>77</Hsp_identity>
+      <Hsp_positive>78</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>80</Hsp_align-len>
+      <Hsp_qseq>TPYTNPDESPYDYYAVGHTSTSISLAAGMAKARDLLGGSERIMAIIGNGSLTGGMAYEGLNNAALEKGNLVIVINDNQWS</Hsp_qseq>
+      <Hsp_hseq>TPYTNPDESPYDYYAVGHTSTSISLAXGMAKARDLLGGSERIMAVIGXGSLTGGMAYEGLNNAALEKGNLVIVINDNQWS</Hsp_hseq>
+      <Hsp_midline>TPYTNPDESPYDYYAVGHTSTSISLA GMAKARDLLGGSERIMA+IG GSLTGGMAYEGLNNAALEKGNLVIVINDNQWS</Hsp_midline>
+    </Hsp>
+    <Hsp>
+      <Hsp_num>2</Hsp_num>
+      <Hsp_bit-score>21.9422</Hsp_bit-score>
+      <Hsp_score>45</Hsp_score>
+      <Hsp_evalue>0.0037958</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>46</Hsp_query-to>
+      <Hsp_hit-from>267</Hsp_hit-from>
+      <Hsp_hit-to>308</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>18</Hsp_identity>
+      <Hsp_positive>25</Hsp_positive>
+      <Hsp_gaps>4</Hsp_gaps>
+      <Hsp_align-len>46</Hsp_align-len>
+      <Hsp_qseq>MTPYTNPDESPYDYYAVGHTSTSISLAAGMAKARDLLGGSERIMAI</Hsp_qseq>
+      <Hsp_hseq>VRPFNLSDDSPKNITA-GPTPAEIAVKT-VASAID--GGQENIMAI</Hsp_hseq>
+      <Hsp_midline>+ P+   D+SP +  A G T   I++   +A A D  GG E IMAI</Hsp_midline>
+    </Hsp>
+    <Hsp>
+      <Hsp_num>3</Hsp_num>
+      <Hsp_bit-score>15.779</Hsp_bit-score>
+      <Hsp_score>29</Hsp_score>
+      <Hsp_evalue>0.538404</Hsp_evalue>
+      <Hsp_query-from>4</Hsp_query-from>
+      <Hsp_query-to>32</Hsp_query-to>
+      <Hsp_hit-from>553</Hsp_hit-from>
+      <Hsp_hit-to>580</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>9</Hsp_identity>
+      <Hsp_positive>16</Hsp_positive>
+      <Hsp_gaps>1</Hsp_gaps>
+      <Hsp_align-len>29</Hsp_align-len>
+      <Hsp_qseq>YTNPDESPYDYYAVGHTSTSISLAAGMAK</Hsp_qseq>
+      <Hsp_hseq>YTDVDQS-YDQILVRNQLTAEQIVASVKQ</Hsp_hseq>
+      <Hsp_midline>YT+ D+S YD   V +  T+  + A + +</Hsp_midline>
+    </Hsp>
+    <Hsp>
+      <Hsp_num>4</Hsp_num>
+      <Hsp_bit-score>13.853</Hsp_bit-score>
+      <Hsp_score>24</Hsp_score>
+      <Hsp_evalue>2.1387</Hsp_evalue>
+      <Hsp_query-from>12</Hsp_query-from>
+      <Hsp_query-to>36</Hsp_query-to>
+      <Hsp_hit-from>214</Hsp_hit-from>
+      <Hsp_hit-to>238</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>6</Hsp_identity>
+      <Hsp_positive>12</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>25</Hsp_align-len>
+      <Hsp_qseq>YDYYAVGHTSTSISLAAGMAKARDL</Hsp_qseq>
+      <Hsp_hseq>FDYRYVADGNDLESMINAFSEIRDV</Hsp_hseq>
+      <Hsp_midline>+DY  V   +   S+    ++ RD+</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+</Iteration_hits>
+  <Iteration_stat>
+    <Statistics>
+      <Statistics_db-num>0</Statistics_db-num>
+      <Statistics_db-len>0</Statistics_db-len>
+      <Statistics_hsp-len>21</Statistics_hsp-len>
+      <Statistics_eff-space>34844</Statistics_eff-space>
+      <Statistics_kappa>0.041</Statistics_kappa>
+      <Statistics_lambda>0.267</Statistics_lambda>
+      <Statistics_entropy>0.14</Statistics_entropy>
+    </Statistics>
+  </Iteration_stat>
+</Iteration>
+<Iteration>
+  <Iteration_iter-num>3</Iteration_iter-num>
+  <Iteration_query-ID>Query_3</Iteration_query-ID>
+  <Iteration_query-def>KLCDKCDI_16160 1-deoxy-D-xylulose-5-phosphate synthase | GCA_000182835.1</Iteration_query-def>
+  <Iteration_query-len>583</Iteration_query-len>
+<Iteration_hits>
+<Hit>
+  <Hit_num>1</Hit_num>
+  <Hit_id>dxs_2</Hit_id>
+  <Hit_def>dxs_2</Hit_def>
+  <Hit_accession>Subject_1</Hit_accession>
+  <Hit_len>583</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>1163.67</Hsp_bit-score>
+      <Hsp_score>3009</Hsp_score>
+      <Hsp_evalue>0</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>583</Hsp_query-to>
+      <Hsp_hit-from>1</Hsp_hit-from>
+      <Hsp_hit-to>583</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>570</Hsp_identity>
+      <Hsp_positive>570</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>583</Hsp_align-len>
+      <Hsp_qseq>MNQHPEYLLNKIKSPADLKVLDLEEMKQLASEIRHLIIEKDAAVGGHLGPDLGIVELTIAYHYVFDAPGDKIIWDVSHQTYPHKMLTGRAYAWLDPEAYGKVTPYTNPDESPYDYYAVGHTSTSISLATGMAKARDLLGGSERIMAVIGDGSLTGGMAYEGLNNAALEKGNLVIVINDNQWSIDQNVGGLTTALKKLRDSQGQDPENPFKAFGFDYRYVADGNDLESMINAFSEIRDVDHPLVLHVNTLKGKGYQPAIEDEEKHHWVRPFNLSDDSPKNITAGPTPAEIAVKTVASAIDGGQENIMAITAAIPGVFGLDSFKESYPDHYVDVGIAEQDSVAFAAGFAKAGGQPVLFENSTFLQRAFDQLSHDVAANNLPVVMIVAGGGIQANSKTHVGVFDQVMVSNLPNWKYLAPTSLTEEAAMINWALKQKDGPVAIKLPVRPVPAGGAVLEGYRHIHYQKRRAGKKIAILALGDMQELGSQVAEELNAALYNPLSANILDTDCLDHLARHYQAVITLENNILDGGFGQKVAGYLADRPVLVKTFGEKREYTDVDQSYDQILVRNQLTAEQIVASVKQLFN</Hsp_qseq>
+      <Hsp_hseq>MXXXPEYLLNKIKSPADLKVLDLEEMKQLASEIRHLIIEKDAAVGGHLGPDLGIVELTIAYHYVFDAPXXKXXXXXSHQTYPHKMLTGRAYAWLDPEAYGKXTPYTNPDESPYDYYAVGHTSTSISLAXGMAKARDLLGGSERIMAVIGXGSLTGGMAYEGLNNAALEKGNLVIVINDNQWSIDQNVGGLTTALKKLRDSQGQDPENPFKAFGFDYRYVADGNDLESMINAFSEIRDVDHPLVLHVNTLKGKGYQPAIEDEEKHHWVRPFNLSDDSPKNITAGPTPAEIAVKTVASAIDGGQENIMAITAAIPGVFGLDSFKESYPDHYVDVGIAEQDSVAFAAGFAKAGGQPVLFENSTFLQRAFDQLSHDVAANNLPVVMIVAGGGIQANSKTHVGVFDQVMVSNLPNWKYLAPTSLTEEAAMINWALKQKDGPVAIKLPVRPVPAGGAVLEGYRHIHYQKRRAGKKIAILALGDMQELGSQVAEELNAALYNPLSANILDTDCLDHLARHYQAVITLENNILDGGFGQKVAGYLADRPVLVKTFGEKREYTDVDQSYDQILVRNQLTAEQIVASVKQLFN</Hsp_hseq>
+      <Hsp_midline>M   PEYLLNKIKSPADLKVLDLEEMKQLASEIRHLIIEKDAAVGGHLGPDLGIVELTIAYHYVFDAP  K     SHQTYPHKMLTGRAYAWLDPEAYGK TPYTNPDESPYDYYAVGHTSTSISLA GMAKARDLLGGSERIMAVIG GSLTGGMAYEGLNNAALEKGNLVIVINDNQWSIDQNVGGLTTALKKLRDSQGQDPENPFKAFGFDYRYVADGNDLESMINAFSEIRDVDHPLVLHVNTLKGKGYQPAIEDEEKHHWVRPFNLSDDSPKNITAGPTPAEIAVKTVASAIDGGQENIMAITAAIPGVFGLDSFKESYPDHYVDVGIAEQDSVAFAAGFAKAGGQPVLFENSTFLQRAFDQLSHDVAANNLPVVMIVAGGGIQANSKTHVGVFDQVMVSNLPNWKYLAPTSLTEEAAMINWALKQKDGPVAIKLPVRPVPAGGAVLEGYRHIHYQKRRAGKKIAILALGDMQELGSQVAEELNAALYNPLSANILDTDCLDHLARHYQAVITLENNILDGGFGQKVAGYLADRPVLVKTFGEKREYTDVDQSYDQILVRNQLTAEQIVASVKQLFN</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+</Iteration_hits>
+  <Iteration_stat>
+    <Statistics>
+      <Statistics_db-num>0</Statistics_db-num>
+      <Statistics_db-len>0</Statistics_db-len>
+      <Statistics_hsp-len>36</Statistics_hsp-len>
+      <Statistics_eff-space>299209</Statistics_eff-space>
+      <Statistics_kappa>0.041</Statistics_kappa>
+      <Statistics_lambda>0.267</Statistics_lambda>
+      <Statistics_entropy>0.14</Statistics_entropy>
+    </Statistics>
+  </Iteration_stat>
+</Iteration>
+<Iteration>
+  <Iteration_iter-num>4</Iteration_iter-num>
+  <Iteration_query-ID>Query_4</Iteration_query-ID>
+  <Iteration_query-def>NKALHJIK_16190 1-deoxy-D-xylulose-5-phosphate synthase | GCA_000191165.1</Iteration_query-def>
+  <Iteration_query-len>83</Iteration_query-len>
+<Iteration_hits>
+<Hit>
+  <Hit_num>1</Hit_num>
+  <Hit_id>dxs_2</Hit_id>
+  <Hit_def>dxs_2</Hit_def>
+  <Hit_accession>Subject_1</Hit_accession>
+  <Hit_len>583</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>160.229</Hsp_bit-score>
+      <Hsp_score>404</Hsp_score>
+      <Hsp_evalue>1.5789e-52</Hsp_evalue>
+      <Hsp_query-from>2</Hsp_query-from>
+      <Hsp_query-to>81</Hsp_query-to>
+      <Hsp_hit-from>103</Hsp_hit-from>
+      <Hsp_hit-to>182</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>77</Hsp_identity>
+      <Hsp_positive>78</Hsp_positive>
+      <Hsp_gaps>0</Hsp_gaps>
+      <Hsp_align-len>80</Hsp_align-len>
+      <Hsp_qseq>TPYTNPDESPYDYYAVGHTSTSISLAAGMAKARELLGGSERIMAVIGNGSLTGGMAYEGLNNAALEKGNLVIVINDNQWS</Hsp_qseq>
+      <Hsp_hseq>TPYTNPDESPYDYYAVGHTSTSISLAXGMAKARDLLGGSERIMAVIGXGSLTGGMAYEGLNNAALEKGNLVIVINDNQWS</Hsp_hseq>
+      <Hsp_midline>TPYTNPDESPYDYYAVGHTSTSISLA GMAKAR+LLGGSERIMAVIG GSLTGGMAYEGLNNAALEKGNLVIVINDNQWS</Hsp_midline>
+    </Hsp>
+    <Hsp>
+      <Hsp_num>2</Hsp_num>
+      <Hsp_bit-score>20.0162</Hsp_bit-score>
+      <Hsp_score>40</Hsp_score>
+      <Hsp_evalue>0.0160654</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>46</Hsp_query-to>
+      <Hsp_hit-from>267</Hsp_hit-from>
+      <Hsp_hit-to>308</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>15</Hsp_identity>
+      <Hsp_positive>23</Hsp_positive>
+      <Hsp_gaps>4</Hsp_gaps>
+      <Hsp_align-len>46</Hsp_align-len>
+      <Hsp_qseq>MTPYTNPDESPYDYYAVGHTSTSISLAAGMAKARELLGGSERIMAV</Hsp_qseq>
+      <Hsp_hseq>VRPFNLSDDSPKNITA-GPTPAEIAVKT---VASAIDGGQENIMAI</Hsp_hseq>
+      <Hsp_midline>+ P+   D+SP +  A G T   I++      A  + GG E IMA+</Hsp_midline>
+    </Hsp>
+    <Hsp>
+      <Hsp_num>3</Hsp_num>
+      <Hsp_bit-score>15.779</Hsp_bit-score>
+      <Hsp_score>29</Hsp_score>
+      <Hsp_evalue>0.548707</Hsp_evalue>
+      <Hsp_query-from>4</Hsp_query-from>
+      <Hsp_query-to>32</Hsp_query-to>
+      <Hsp_hit-from>553</Hsp_hit-from>
+      <Hsp_hit-to>580</Hsp_hit-to>
+      <Hsp_query-frame>0</Hsp_query-frame>
+      <Hsp_hit-frame>0</Hsp_hit-frame>
+      <Hsp_identity>9</Hsp_identity>
+      <Hsp_positive>16</Hsp_positive>
+      <Hsp_gaps>1</Hsp_gaps>
+      <Hsp_align-len>29</Hsp_align-len>
+      <Hsp_qseq>YTNPDESPYDYYAVGHTSTSISLAAGMAK</Hsp_qseq>
+      <Hsp_hseq>YTDVDQS-YDQILVRNQLTAEQIVASVKQ</Hsp_hseq>
+      <Hsp_midline>YT+ D+S YD   V +  T+  + A + +</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+</Iteration_hits>
+  <Iteration_stat>
+    <Statistics>
+      <Statistics_db-num>0</Statistics_db-num>
+      <Statistics_db-len>0</Statistics_db-len>
+      <Statistics_hsp-len>21</Statistics_hsp-len>
+      <Statistics_eff-space>34844</Statistics_eff-space>
+      <Statistics_kappa>0.041</Statistics_kappa>
+      <Statistics_lambda>0.267</Statistics_lambda>
+      <Statistics_entropy>0.14</Statistics_entropy>
+    </Statistics>
+  </Iteration_stat>
+</Iteration>
+</BlastOutput_iterations>
+</BlastOutput>
+

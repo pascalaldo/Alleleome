@@ -1,0 +1,212 @@
+<?xml version="1.0"?>
+<!DOCTYPE BlastOutput PUBLIC "-//NCBI//NCBI BlastOutput/EN" "http://www.ncbi.nlm.nih.gov/dtd/NCBI_BlastOutput.dtd">
+<BlastOutput>
+  <BlastOutput_program>blastn</BlastOutput_program>
+  <BlastOutput_version>BLASTN 2.15.0+</BlastOutput_version>
+  <BlastOutput_reference>Zheng Zhang, Scott Schwartz, Lukas Wagner, and Webb Miller (2000), &quot;A greedy algorithm for aligning DNA sequences&quot;, J Comput Biol 2000; 7(1-2):203-14.</BlastOutput_reference>
+  <BlastOutput_db></BlastOutput_db>
+  <BlastOutput_query-ID>Query_1</BlastOutput_query-ID>
+  <BlastOutput_query-def>PHLFEKDO_09180 Manganese-dependent inorganic pyrophosphatase | GCA_000014405.1</BlastOutput_query-def>
+  <BlastOutput_query-len>936</BlastOutput_query-len>
+  <BlastOutput_param>
+    <Parameters>
+      <Parameters_expect>10</Parameters_expect>
+      <Parameters_sc-match>1</Parameters_sc-match>
+      <Parameters_sc-mismatch>-2</Parameters_sc-mismatch>
+      <Parameters_gap-open>0</Parameters_gap-open>
+      <Parameters_gap-extend>0</Parameters_gap-extend>
+      <Parameters_filter>L;m;</Parameters_filter>
+    </Parameters>
+  </BlastOutput_param>
+<BlastOutput_iterations>
+<Iteration>
+  <Iteration_iter-num>1</Iteration_iter-num>
+  <Iteration_query-ID>Query_1</Iteration_query-ID>
+  <Iteration_query-def>PHLFEKDO_09180 Manganese-dependent inorganic pyrophosphatase | GCA_000014405.1</Iteration_query-def>
+  <Iteration_query-len>936</Iteration_query-len>
+<Iteration_hits>
+<Hit>
+  <Hit_num>1</Hit_num>
+  <Hit_id>ppaC</Hit_id>
+  <Hit_def>ppaC</Hit_def>
+  <Hit_accession>Subject_1</Hit_accession>
+  <Hit_len>935</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>1700.04</Hsp_bit-score>
+      <Hsp_score>920</Hsp_score>
+      <Hsp_evalue>0</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>936</Hsp_query-to>
+      <Hsp_hit-from>1</Hsp_hit-from>
+      <Hsp_hit-to>935</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>931</Hsp_identity>
+      <Hsp_positive>931</Hsp_positive>
+      <Hsp_gaps>1</Hsp_gaps>
+      <Hsp_align-len>936</Hsp_align-len>
+      <Hsp_qseq>ATGGAAAAAGAACTGATTTTTGGTCACAGAAACCCAGATACTGACGCAATTGGCACGGCGATTGCCTACTCATACTTCCAAAACCAACATGGCTACAACACTGAAGCCGTTGCTTTGGGTGAAGCCAACGACGAAACTTCTTTTGCCTTGAAGAAGTTCGGCTTTGAAGCACCACGCGTGGTTAAGACTGTCGCAAATGAAGTCAAGGCCATCATGCTGGTTGACCACAACGAACCGCAACAAAGCGTTGAAGACCGGGACCAAGTCAAGGTTACCCACGTCATTGACCACCACCGGATCAGCAACTTCGCGACGATCGATCCCTTGTTCTACCGGGCTGAACCAGTAGGCTGCACTTCCACTGTTTTGTGGGAAATGTTCAAGGAACAAAACATGGAAATTCCAGCCAACATTGCTGGTATCATGCTCAGTGCCATTATTTCCGACACCTTGCTTTTGAAGTCACCAACCACTACTGACATCGACAAGGAAGCAGTTGAAGAACTGGCTAAGATTGCCGGCGTTGACTACAAGGAATACGGTTTGGAACTGCTTAAGGCCGGCACCAACATCGCCGCTAAGTCAGTTGAAGAACTGATCGACCTGGACGCCAAGAGCTTCGAACTGGGCTCAAAGACTGCCCGGATCGCTCAAGTCAACGTTGTTGACGTCCCAGAAGCCCTGGAACGCAAGGATGCCTTCCTGGCAGCCATGGAAAAGGATGCTAAGGCTAACGGCTATGACTTGTTCATGCTGGTAATTACCAACGTTTTGGACTCTGACTCAGAAGTTCTCTTCATTGGGGATGACGAAAGCAAGTCTGTCTTTGCCAAGGCCTTCGGCAAGGAACTGGTTGACTCAGAAGCCCACCTGCTAGGCGTTGTTTCCCGGAAGAAGCAAATCGTTCCGCCATTGACCCGGGCATTTGAAGCTTAA</Hsp_qseq>
+      <Hsp_hseq>ATGGAAAAAGAACTGATTTTTGGTCACAGAAACCCAGATACTGACGCAATTGGCACGGCGATTGCCTACTCATACTTCCAAAACCAACATGGCTACAACACTGAAGCCGTTGCTTTGGGTGAAGCCAACGACGAAACTTCTTTTGCCTTGAAGAAGTTCGGCTTTGAAGCACCACGCGTGGTTAAGACTGTCGCAAATGAAGTCAAGGCCATCATGCTGGTTGACCACAACGAACCGCAACAAAGCGTTGAAGACCGGGACCAAGTCAAGGTTACCCACGTCATTGACCACCACCGGATCAGCAACTTCGCGACGATCGACCCCTTGTTCTACCGGGCTGAACCAGTAGGCTGCACTTCCACTGTTTT-TGGGAAATGTTCAAGGAACAAAACATGGAAATTCCAGCCAACATTGCTGGTATCATGCTCAGTGCCATTATTTCCGACACCTTGCTTTTGAAGTCACCAACCACTACTGACATCGACAAGGAAGCAGTTGAAGAACTGGCTAAGATTGCCGGCGTTGACTACAAGGAATACGGTTTGGAACTGCTTAAGGCCGGCACCAACATCGCCGCTAAGTCAGTTGAAGAACTGATCGACCTGGACGCCAAGAGCTTCGAACTGGGCTCAAAGACTGCCCGGATCGCTCAAGTCAACGTTGTTGACGTCCCAGAAGCCCTGGAACGCAAGGATGCCTTCCTGGCAGCCATGGAAAAGGATGCTAAGGCTAACGGCTACGACTTGTTCATGCTGGTAATTACCAACGTTTTGGACTCTGACTCAGAAGTTCTCTTCATCGGGGATGACGAAAGCAAGTCTGTCTTTGCCAAGGCCTTCGGCAAGGAACTGGTTGACTCAGAAGCCCACCTGCCAGGCGTTGTTTCCCGGAAGAAGCAAATCGTTCCGCCATTGACCCGGGCATTTGAAGCTTAA</Hsp_hseq>
+      <Hsp_midline>|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+</Iteration_hits>
+  <Iteration_stat>
+    <Statistics>
+      <Statistics_db-num>0</Statistics_db-num>
+      <Statistics_db-len>0</Statistics_db-len>
+      <Statistics_hsp-len>13</Statistics_hsp-len>
+      <Statistics_eff-space>851006</Statistics_eff-space>
+      <Statistics_kappa>0.46</Statistics_kappa>
+      <Statistics_lambda>1.28</Statistics_lambda>
+      <Statistics_entropy>0.85</Statistics_entropy>
+    </Statistics>
+  </Iteration_stat>
+</Iteration>
+<Iteration>
+  <Iteration_iter-num>2</Iteration_iter-num>
+  <Iteration_query-ID>Query_2</Iteration_query-ID>
+  <Iteration_query-def>MAAAAKME_09270 Manganese-dependent inorganic pyrophosphatase | GCA_000056065.1</Iteration_query-def>
+  <Iteration_query-len>936</Iteration_query-len>
+<Iteration_hits>
+<Hit>
+  <Hit_num>1</Hit_num>
+  <Hit_id>ppaC</Hit_id>
+  <Hit_def>ppaC</Hit_def>
+  <Hit_accession>Subject_1</Hit_accession>
+  <Hit_len>935</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>1722.2</Hsp_bit-score>
+      <Hsp_score>932</Hsp_score>
+      <Hsp_evalue>0</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>936</Hsp_query-to>
+      <Hsp_hit-from>1</Hsp_hit-from>
+      <Hsp_hit-to>935</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>935</Hsp_identity>
+      <Hsp_positive>935</Hsp_positive>
+      <Hsp_gaps>1</Hsp_gaps>
+      <Hsp_align-len>936</Hsp_align-len>
+      <Hsp_qseq>ATGGAAAAAGAACTGATTTTTGGTCACAGAAACCCAGATACTGACGCAATTGGCACGGCGATTGCCTACTCATACTTCCAAAACCAACATGGCTACAACACTGAAGCCGTTGCTTTGGGTGAAGCCAACGACGAAACTTCTTTTGCCTTGAAGAAGTTCGGCTTTGAAGCACCACGCGTGGTTAAGACTGTCGCAAATGAAGTCAAGGCCATCATGCTGGTTGACCACAACGAACCGCAACAAAGCGTTGAAGACCGGGACCAAGTCAAGGTTACCCACGTCATTGACCACCACCGGATCAGCAACTTCGCGACGATCGACCCCTTGTTCTACCGGGCTGAACCAGTAGGCTGCACTTCCACTGTTTTATGGGAAATGTTCAAGGAACAAAACATGGAAATTCCAGCCAACATTGCTGGTATCATGCTCAGTGCCATTATTTCCGACACCTTGCTTTTGAAGTCACCAACCACTACTGACATCGACAAGGAAGCAGTTGAAGAACTGGCTAAGATTGCCGGCGTTGACTACAAGGAATACGGTTTGGAACTGCTTAAGGCCGGCACCAACATCGCCGCTAAGTCAGTTGAAGAACTGATCGACCTGGACGCCAAGAGCTTCGAACTGGGCTCAAAGACTGCCCGGATCGCTCAAGTCAACGTTGTTGACGTCCCAGAAGCCCTGGAACGCAAGGATGCCTTCCTGGCAGCCATGGAAAAGGATGCTAAGGCTAACGGCTACGACTTGTTCATGCTGGTAATTACCAACGTTTTGGACTCTGACTCAGAAGTTCTCTTCATCGGGGATGACGAAAGCAAGTCTGTCTTTGCCAAGGCCTTCGGCAAGGAACTGGTTGACTCAGAAGCCCACCTGCCAGGCGTTGTTTCCCGGAAGAAGCAAATCGTTCCGCCATTGACCCGGGCATTTGAAGCTTAA</Hsp_qseq>
+      <Hsp_hseq>ATGGAAAAAGAACTGATTTTTGGTCACAGAAACCCAGATACTGACGCAATTGGCACGGCGATTGCCTACTCATACTTCCAAAACCAACATGGCTACAACACTGAAGCCGTTGCTTTGGGTGAAGCCAACGACGAAACTTCTTTTGCCTTGAAGAAGTTCGGCTTTGAAGCACCACGCGTGGTTAAGACTGTCGCAAATGAAGTCAAGGCCATCATGCTGGTTGACCACAACGAACCGCAACAAAGCGTTGAAGACCGGGACCAAGTCAAGGTTACCCACGTCATTGACCACCACCGGATCAGCAACTTCGCGACGATCGACCCCTTGTTCTACCGGGCTGAACCAGTAGGCTGCACTTCCACTGTTTT-TGGGAAATGTTCAAGGAACAAAACATGGAAATTCCAGCCAACATTGCTGGTATCATGCTCAGTGCCATTATTTCCGACACCTTGCTTTTGAAGTCACCAACCACTACTGACATCGACAAGGAAGCAGTTGAAGAACTGGCTAAGATTGCCGGCGTTGACTACAAGGAATACGGTTTGGAACTGCTTAAGGCCGGCACCAACATCGCCGCTAAGTCAGTTGAAGAACTGATCGACCTGGACGCCAAGAGCTTCGAACTGGGCTCAAAGACTGCCCGGATCGCTCAAGTCAACGTTGTTGACGTCCCAGAAGCCCTGGAACGCAAGGATGCCTTCCTGGCAGCCATGGAAAAGGATGCTAAGGCTAACGGCTACGACTTGTTCATGCTGGTAATTACCAACGTTTTGGACTCTGACTCAGAAGTTCTCTTCATCGGGGATGACGAAAGCAAGTCTGTCTTTGCCAAGGCCTTCGGCAAGGAACTGGTTGACTCAGAAGCCCACCTGCCAGGCGTTGTTTCCCGGAAGAAGCAAATCGTTCCGCCATTGACCCGGGCATTTGAAGCTTAA</Hsp_hseq>
+      <Hsp_midline>|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+</Iteration_hits>
+  <Iteration_stat>
+    <Statistics>
+      <Statistics_db-num>0</Statistics_db-num>
+      <Statistics_db-len>0</Statistics_db-len>
+      <Statistics_hsp-len>13</Statistics_hsp-len>
+      <Statistics_eff-space>851006</Statistics_eff-space>
+      <Statistics_kappa>0.46</Statistics_kappa>
+      <Statistics_lambda>1.28</Statistics_lambda>
+      <Statistics_entropy>0.85</Statistics_entropy>
+    </Statistics>
+  </Iteration_stat>
+</Iteration>
+<Iteration>
+  <Iteration_iter-num>3</Iteration_iter-num>
+  <Iteration_query-ID>Query_3</Iteration_query-ID>
+  <Iteration_query-def>KLCDKCDI_09240 Manganese-dependent inorganic pyrophosphatase | GCA_000182835.1</Iteration_query-def>
+  <Iteration_query-len>936</Iteration_query-len>
+<Iteration_hits>
+<Hit>
+  <Hit_num>1</Hit_num>
+  <Hit_id>ppaC</Hit_id>
+  <Hit_def>ppaC</Hit_def>
+  <Hit_accession>Subject_1</Hit_accession>
+  <Hit_len>935</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>1694.5</Hsp_bit-score>
+      <Hsp_score>917</Hsp_score>
+      <Hsp_evalue>0</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>936</Hsp_query-to>
+      <Hsp_hit-from>1</Hsp_hit-from>
+      <Hsp_hit-to>935</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>930</Hsp_identity>
+      <Hsp_positive>930</Hsp_positive>
+      <Hsp_gaps>1</Hsp_gaps>
+      <Hsp_align-len>936</Hsp_align-len>
+      <Hsp_qseq>ATGGAAAAAGAACTGATTTTTGGTCACAGAAACCCAGATACTGACGCAATTGGCACGGCGATTGCCTACTCATACTTCCAAAACCAACATGGCTACAACACTGAAGCCGTTGCTTTGGGTGAAGCCAACGACGAAACTTCTTTTGCCTTGAAGAAGTTCGGCTTTGAAGCACCACGCGTGGTTAAGACTGTCGCAAATGAAGTCAAGGCCATCATGCTGGTTGACCACAACGAACCGCAACAAAGCGTTGAAGACCGGGACCAAGTCAAGGTTACCCACGTCATTGACCACCACCGGATCAGCAACTTCGCGACGATCGACCCCTTGTTCTACCGCGCTGAACCAGTAGGCTGCACTTCCACTGTTTTGTGGGAAATGTTCAAGGAGCAAAACATGGAAATTCCAACCAACATTGCTGGTATCATGCTCAGTGCCATTATTTCCGACACCTTGCTTTTGAAGTCACCAACCACTACTGACATCGACAAGGAAGCAGTTGAAGACCTGGCTAAGATTGCCGGCGTTGACTATAAGGAATACGGTTTGGAACTGCTTAAGGCCGGCACCAACATCGCCGCTAAGTCAGTTGAAGAACTGATCGACCTGGACGCCAAGAGCTTCGAACTGGGCTCAAAGACTGCCCGGATCGCTCAAGTCAACGTTGTTGACGTCCCAGAAGCCCTGGAACGCAAGGATGCCTTCCTGGCAGCCATGGAAAAGGATGCTAAGGCTAACGGCTACGACTTGTTCATGCTGGTAATTACCAACGTTTTGGACTCTGACTCAGAAGTTCTCTTCATCGGGGATGACGAAAGCAAGTCTGTCTTTGCCAAGGCCTTCGGCAAGGAACTGGTTGACTCAGAAGCCCACCTGCCAGGCGTTGTTTCCCGGAAGAAGCAAATCGTTCCGCCATTGACCCGGGCATTTGAAGCTTAA</Hsp_qseq>
+      <Hsp_hseq>ATGGAAAAAGAACTGATTTTTGGTCACAGAAACCCAGATACTGACGCAATTGGCACGGCGATTGCCTACTCATACTTCCAAAACCAACATGGCTACAACACTGAAGCCGTTGCTTTGGGTGAAGCCAACGACGAAACTTCTTTTGCCTTGAAGAAGTTCGGCTTTGAAGCACCACGCGTGGTTAAGACTGTCGCAAATGAAGTCAAGGCCATCATGCTGGTTGACCACAACGAACCGCAACAAAGCGTTGAAGACCGGGACCAAGTCAAGGTTACCCACGTCATTGACCACCACCGGATCAGCAACTTCGCGACGATCGACCCCTTGTTCTACCGGGCTGAACCAGTAGGCTGCACTTCCACTGTTTT-TGGGAAATGTTCAAGGAACAAAACATGGAAATTCCAGCCAACATTGCTGGTATCATGCTCAGTGCCATTATTTCCGACACCTTGCTTTTGAAGTCACCAACCACTACTGACATCGACAAGGAAGCAGTTGAAGAACTGGCTAAGATTGCCGGCGTTGACTACAAGGAATACGGTTTGGAACTGCTTAAGGCCGGCACCAACATCGCCGCTAAGTCAGTTGAAGAACTGATCGACCTGGACGCCAAGAGCTTCGAACTGGGCTCAAAGACTGCCCGGATCGCTCAAGTCAACGTTGTTGACGTCCCAGAAGCCCTGGAACGCAAGGATGCCTTCCTGGCAGCCATGGAAAAGGATGCTAAGGCTAACGGCTACGACTTGTTCATGCTGGTAATTACCAACGTTTTGGACTCTGACTCAGAAGTTCTCTTCATCGGGGATGACGAAAGCAAGTCTGTCTTTGCCAAGGCCTTCGGCAAGGAACTGGTTGACTCAGAAGCCCACCTGCCAGGCGTTGTTTCCCGGAAGAAGCAAATCGTTCCGCCATTGACCCGGGCATTTGAAGCTTAA</Hsp_hseq>
+      <Hsp_midline>||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||||| ||||||||||||||||| |||||||||||||||||| ||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| |||||||||||||||||||||||||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+</Iteration_hits>
+  <Iteration_stat>
+    <Statistics>
+      <Statistics_db-num>0</Statistics_db-num>
+      <Statistics_db-len>0</Statistics_db-len>
+      <Statistics_hsp-len>13</Statistics_hsp-len>
+      <Statistics_eff-space>851006</Statistics_eff-space>
+      <Statistics_kappa>0.46</Statistics_kappa>
+      <Statistics_lambda>1.28</Statistics_lambda>
+      <Statistics_entropy>0.85</Statistics_entropy>
+    </Statistics>
+  </Iteration_stat>
+</Iteration>
+<Iteration>
+  <Iteration_iter-num>4</Iteration_iter-num>
+  <Iteration_query-ID>Query_4</Iteration_query-ID>
+  <Iteration_query-def>NKALHJIK_09780 Manganese-dependent inorganic pyrophosphatase | GCA_000191165.1</Iteration_query-def>
+  <Iteration_query-len>936</Iteration_query-len>
+<Iteration_hits>
+<Hit>
+  <Hit_num>1</Hit_num>
+  <Hit_id>ppaC</Hit_id>
+  <Hit_def>ppaC</Hit_def>
+  <Hit_accession>Subject_1</Hit_accession>
+  <Hit_len>935</Hit_len>
+  <Hit_hsps>
+    <Hsp>
+      <Hsp_num>1</Hsp_num>
+      <Hsp_bit-score>1722.2</Hsp_bit-score>
+      <Hsp_score>932</Hsp_score>
+      <Hsp_evalue>0</Hsp_evalue>
+      <Hsp_query-from>1</Hsp_query-from>
+      <Hsp_query-to>936</Hsp_query-to>
+      <Hsp_hit-from>1</Hsp_hit-from>
+      <Hsp_hit-to>935</Hsp_hit-to>
+      <Hsp_query-frame>1</Hsp_query-frame>
+      <Hsp_hit-frame>1</Hsp_hit-frame>
+      <Hsp_identity>935</Hsp_identity>
+      <Hsp_positive>935</Hsp_positive>
+      <Hsp_gaps>1</Hsp_gaps>
+      <Hsp_align-len>936</Hsp_align-len>
+      <Hsp_qseq>ATGGAAAAAGAACTGATTTTTGGTCACAGAAACCCAGATACTGACGCAATTGGCACGGCGATTGCCTACTCATACTTCCAAAACCAACATGGCTACAACACTGAAGCCGTTGCTTTGGGTGAAGCCAACGACGAAACTTCTTTTGCCTTGAAGAAGTTCGGCTTTGAAGCACCACGCGTGGTTAAGACTGTCGCAAATGAAGTCAAGGCCATCATGCTGGTTGACCACAACGAACCGCAACAAAGCGTTGAAGACCGGGACCAAGTCAAGGTTACCCACGTCATTGACCACCACCGGATCAGCAACTTCGCGACGATCGACCCCTTGTTCTACCGGGCTGAACCAGTAGGCTGCACTTCCACTGTTTTATGGGAAATGTTCAAGGAACAAAACATGGAAATTCCAGCCAACATTGCTGGTATCATGCTCAGTGCCATTATTTCCGACACCTTGCTTTTGAAGTCACCAACCACTACTGACATCGACAAGGAAGCAGTTGAAGAACTGGCTAAGATTGCCGGCGTTGACTACAAGGAATACGGTTTGGAACTGCTTAAGGCCGGCACCAACATCGCCGCTAAGTCAGTTGAAGAACTGATCGACCTGGACGCCAAGAGCTTCGAACTGGGCTCAAAGACTGCCCGGATCGCTCAAGTCAACGTTGTTGACGTCCCAGAAGCCCTGGAACGCAAGGATGCCTTCCTGGCAGCCATGGAAAAGGATGCTAAGGCTAACGGCTACGACTTGTTCATGCTGGTAATTACCAACGTTTTGGACTCTGACTCAGAAGTTCTCTTCATCGGGGATGACGAAAGCAAGTCTGTCTTTGCCAAGGCCTTCGGCAAGGAACTGGTTGACTCAGAAGCCCACCTGCCAGGCGTTGTTTCCCGGAAGAAGCAAATCGTTCCGCCATTGACCCGGGCATTTGAAGCTTAA</Hsp_qseq>
+      <Hsp_hseq>ATGGAAAAAGAACTGATTTTTGGTCACAGAAACCCAGATACTGACGCAATTGGCACGGCGATTGCCTACTCATACTTCCAAAACCAACATGGCTACAACACTGAAGCCGTTGCTTTGGGTGAAGCCAACGACGAAACTTCTTTTGCCTTGAAGAAGTTCGGCTTTGAAGCACCACGCGTGGTTAAGACTGTCGCAAATGAAGTCAAGGCCATCATGCTGGTTGACCACAACGAACCGCAACAAAGCGTTGAAGACCGGGACCAAGTCAAGGTTACCCACGTCATTGACCACCACCGGATCAGCAACTTCGCGACGATCGACCCCTTGTTCTACCGGGCTGAACCAGTAGGCTGCACTTCCACTGTTTT-TGGGAAATGTTCAAGGAACAAAACATGGAAATTCCAGCCAACATTGCTGGTATCATGCTCAGTGCCATTATTTCCGACACCTTGCTTTTGAAGTCACCAACCACTACTGACATCGACAAGGAAGCAGTTGAAGAACTGGCTAAGATTGCCGGCGTTGACTACAAGGAATACGGTTTGGAACTGCTTAAGGCCGGCACCAACATCGCCGCTAAGTCAGTTGAAGAACTGATCGACCTGGACGCCAAGAGCTTCGAACTGGGCTCAAAGACTGCCCGGATCGCTCAAGTCAACGTTGTTGACGTCCCAGAAGCCCTGGAACGCAAGGATGCCTTCCTGGCAGCCATGGAAAAGGATGCTAAGGCTAACGGCTACGACTTGTTCATGCTGGTAATTACCAACGTTTTGGACTCTGACTCAGAAGTTCTCTTCATCGGGGATGACGAAAGCAAGTCTGTCTTTGCCAAGGCCTTCGGCAAGGAACTGGTTGACTCAGAAGCCCACCTGCCAGGCGTTGTTTCCCGGAAGAAGCAAATCGTTCCGCCATTGACCCGGGCATTTGAAGCTTAA</Hsp_hseq>
+      <Hsp_midline>|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||| |||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||</Hsp_midline>
+    </Hsp>
+  </Hit_hsps>
+</Hit>
+</Iteration_hits>
+  <Iteration_stat>
+    <Statistics>
+      <Statistics_db-num>0</Statistics_db-num>
+      <Statistics_db-len>0</Statistics_db-len>
+      <Statistics_hsp-len>13</Statistics_hsp-len>
+      <Statistics_eff-space>851006</Statistics_eff-space>
+      <Statistics_kappa>0.46</Statistics_kappa>
+      <Statistics_lambda>1.28</Statistics_lambda>
+      <Statistics_entropy>0.85</Statistics_entropy>
+    </Statistics>
+  </Iteration_stat>
+</Iteration>
+</BlastOutput_iterations>
+</BlastOutput>
+
