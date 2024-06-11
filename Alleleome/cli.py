@@ -171,7 +171,7 @@ def main():
             required=True,
             help="Path to all_locustags csv file.",
         )
-    for x in ["fasta", "process", "analyze"]:
+    for x in ["process", "analyze"]:
         parsers[x].add_argument(
             "--pan",
             action=argparse.BooleanOptionalAction,
