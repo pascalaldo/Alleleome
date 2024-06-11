@@ -84,7 +84,7 @@ def codon_mut(
 
     for gene in gene_list:
         blast_output_dir = (
-            out_dir / gene / "output"
+            out_dir / "output" / gene
         )
         blast_output_file = blast_output_dir / (
             "nucleotide_blast_out_" + gene + ".xml"

@@ -16,14 +16,14 @@ def build_consensus(
     out_dir = Path(out_dir)
 
     for gene_id in gene_list:
-        build_single_gene_consensus(gene_id, out_dir / gene_id)
+        build_single_gene_consensus(gene_id, out_dir)
     
     logging.info("Completed build_consensus in build_consensus_sequence")
 
 def build_single_gene_consensus(gene_id, out_dir):
     out_dir = Path(out_dir)
-    alignment_input_dir = out_dir / "input"
-    alignment_output_dir = out_dir / "output"
+    alignment_input_dir = out_dir / "input" / gene_id
+    alignment_output_dir = out_dir / "output" / gene_id
     alignment_output_dir.mkdir(parents=True, exist_ok=True)
 
     for cons_type, ext in {"amino_acid": "faa", "nucleotide": "fna"}.items():

@@ -40,7 +40,7 @@ def process_selected_genes(all_locustag_df, locustag_list, gene_list, out_dir):
     sel_locustag_df = all_locustag_df.loc[locustag_list]
     
     for gene in gene_list:
-        gene_dir = out_dir / gene / "input"
+        gene_dir = out_dir / "input" / gene
         gene_dir.mkdir(parents=True, exist_ok=True)
         fna_path = gene_dir / "pan_genes.fna"
         faa_path = gene_dir / "pan_genes.faa"

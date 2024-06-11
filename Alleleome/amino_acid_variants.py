@@ -155,7 +155,7 @@ def generate_amino_acid_vars(
 
     for gene in gene_list:
         blast_output_dir = (
-            out_dir / gene / "output"
+            out_dir / "output" / gene
         )
         blast_output_file_path = blast_output_dir / (
             "amino_acid_blast_out_" + gene + ".xml"
