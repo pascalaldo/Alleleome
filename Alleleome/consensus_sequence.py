@@ -10,15 +10,32 @@ from Bio.Align.Applications import MafftCommandline
 
 
 def build_consensus(
-    gene_list, out_dir
+    gene_list, out_dir, p=1
 ):
     logging.info("Starting build_consensus in build_consensus_sequence")
     out_dir = Path(out_dir)
 
-    for gene_id in gene_list:
-        build_single_gene_consensus(gene_id, out_dir)
+    if p == 1:
+        logging.info(f"Aligning sequences sequentially (p={p})")
+        for gene_id in gene_list:
+            build_single_gene_consensus(gene_id, out_dir)
+    else:
+        logging.info(f"Aligning sequences in parallel (p={p})")
+
+        from multiprocessing import Pool
+        from itertools import repeat
+
+        chunksize = min(len(gene_list) // p, 500)
+        logging.info(f"Parallel chunksize = {chunksize}")
+        with Pool(p) as pool:
+            for _ in pool.imap_unordered(build_single_gene_consensus_parallel, zip(gene_list, repeat(out_dir)), chunksize=chunksize):
+                pass
     
     logging.info("Completed build_consensus in build_consensus_sequence")
+
+def build_single_gene_consensus_parallel(args):
+    gene_id, out_dir = args
+    build_single_gene_consensus(gene_id, out_dir)
 
 def build_single_gene_consensus(gene_id, out_dir):
     out_dir = Path(out_dir)

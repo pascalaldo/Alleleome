@@ -90,9 +90,9 @@ def main_process(args):
     all_genes_df, sel_locustag_df, sel_genes_df, gene_list, locustag_list = (
         load_all_gene_data(args)
     )
-    consensus_sequence.build_consensus(gene_list, args.out_dir)
-    sequence_alignment.align_sequences(gene_list, args.out_dir, "amino_acid")
-    sequence_alignment.align_sequences(gene_list, args.out_dir, "nucleotide")
+    consensus_sequence.build_consensus(gene_list, args.out_dir, p=args.p)
+    sequence_alignment.align_sequences(gene_list, args.out_dir, "amino_acid", p=args.p)
+    sequence_alignment.align_sequences(gene_list, args.out_dir, "nucleotide", p=args.p)
 
 
 def main_process_gene(args):
@@ -171,13 +171,7 @@ def main():
             required=True,
             help="Path to all_locustags csv file.",
         )
-    for x in ["fasta", "process", "analyze"]:
-        parsers[x].add_argument(
-            "--pan",
-            action=argparse.BooleanOptionalAction,
-            help="Analyze the pangenome, instead of core.",
-        )
-
+    for x in ["prepare", "fasta", "process", "analyze"]:
         parsers[x].add_argument(
             "--all_genes", type=str, required=True, help="Path to all_genes csv file."
         )
@@ -214,6 +208,19 @@ def main():
         type=str,
         required=True,
         help="Path to pan_gene_syno_non_syno_df csv file.",
+    )
+    for x in ["fasta", "process", "analyze"]:
+        parsers[x].add_argument(
+            "--pan",
+            action=argparse.BooleanOptionalAction,
+            help="Analyze the pangenome, instead of core.",
+        )
+    parsers["process"].add_argument(
+        "-p",
+        type=int,
+        required=False,
+        default=1,
+        help="Number of parallel processes to spawn."
     )
 
     # parser.add_argument(
