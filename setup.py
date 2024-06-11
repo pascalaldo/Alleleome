@@ -66,5 +66,5 @@ setup(
         "biopython == 1.83",
     ],
     package_data={"Alleleome": ["sample_data/Oenococcus_oeni/*"]},
-    entry_points={"console_scripts": ["Alleleome=Alleleome.cli:main"]},
+    entry_points={"console_scripts": ["alleleome=Alleleome.cli:main"]},
 )

@@ -108,6 +108,8 @@ def main_analyze(args):
     amino_acid_variants.generate_amino_acid_vars(gene_list, args.out_dir, args.aa_vars)
     codon_mutations.codon_mut(gene_list, args.out_dir, args.codon_muts)
 
+def ask_select_mode(args):
+    logging.error("Please select a mode, see --help for more info.")
 
 def main():
     logging.info("Application started")
@@ -118,6 +120,7 @@ def main():
             "alleles of core genes in a species pan-genome."
         )
     )
+    parser.set_defaults(func=ask_select_mode)
     subparsers = parser.add_subparsers()
 
     # parser.add_argument("mode", type=str, choices=["prepare", "fasta", "process", "process_gene", "analyze"])
@@ -159,7 +162,7 @@ def main():
         "--gbk_folder",
         type=str,
         required=True,
-        help="Folder containing GenBank files (use with mode 'locustags')",
+        help="Folder containing GenBank files.",
     )
     for x in ["prepare", "fasta"]:
         parsers[x].add_argument(
