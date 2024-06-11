@@ -144,7 +144,6 @@ options:
                         Folder containing GenBank files.
   --all_locustag ALL_LOCUSTAG
                         Path to all_locustags csv file.
-  --pan, --no-pan       Analyze the pangenome, instead of core.
   --all_genes ALL_GENES
                         Path to all_genes csv file.
   --sel_locustag SEL_LOCUSTAG
