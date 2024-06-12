@@ -11,7 +11,7 @@ from . import (
     amino_acid_variants,
     codon_mutations,
 )
-from preplot import (
+from .preplot import (
     dominant_aa,
     var_aa,
 )
