@@ -200,3 +200,8 @@ def gene_list(sel_genes_df, pan=False):
 
 def locustag_list(sel_locustag_df, pan=False):
     return sel_locustag_df.index[sel_locustag_df["passed"]]
+
+def load_gene_list(gene_list_path):
+    with open(gene_list_path, "r") as f:
+        gene_list = f.readlines()
+    return gene_list

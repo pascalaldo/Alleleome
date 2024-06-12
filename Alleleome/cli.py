@@ -3,18 +3,6 @@ import datetime
 import logging
 import os
 
-# from . import (
-#     QCQA_1,
-#     QCQA_2,
-#     QCQA_3,
-#     QCQA_4,
-#     __version__,
-#     amino_acid_sequence_alignment,
-#     build_consensus_sequence,
-#     codon_mutations,
-#     generate_amino_acid_variants,
-#     nucleotide_sequence_alignment,
-# )
 from . import (
     load_and_qcqa,
     write_fasta,
@@ -22,6 +10,10 @@ from . import (
     sequence_alignment,
     amino_acid_variants,
     codon_mutations,
+)
+from preplot import (
+    dominant_aa,
+    var_aa,
 )
 
 # log_directory = "./log"
@@ -84,12 +76,12 @@ def main_fasta(args):
     write_fasta.process_selected_genes(
         all_locustag_df, locustag_list, gene_list, args.out_dir
     )
+    with open(args.gene_list, "w") as f:
+        f.writelines(gene_list)
 
 
 def main_process(args):
-    all_genes_df, sel_locustag_df, sel_genes_df, gene_list, locustag_list = (
-        load_all_gene_data(args)
-    )
+    gene_list = load_and_qcqa.load_gene_list(args.gene_list)
     consensus_sequence.build_consensus(gene_list, args.out_dir, p=args.p)
     sequence_alignment.align_sequences(gene_list, args.out_dir, "amino_acid", p=args.p)
     sequence_alignment.align_sequences(gene_list, args.out_dir, "nucleotide", p=args.p)
@@ -102,11 +94,14 @@ def main_process_gene(args):
 
 
 def main_analyze(args):
-    all_genes_df, sel_locustag_df, sel_genes_df, gene_list, locustag_list = (
-        load_all_gene_data(args)
-    )
+    gene_list = load_and_qcqa.load_gene_list(args.gene_list)
     amino_acid_variants.generate_amino_acid_vars(gene_list, args.out_dir, args.aa_vars)
     codon_mutations.codon_mut(gene_list, args.out_dir, args.codon_muts)
+
+def main_preplot(args):
+    gene_list = load_and_qcqa.load_gene_list(args.gene_list)
+    dominant_aa.find_dominant_aa(gene_list, args.out_dir, args.dominant_aa)
+    var_aa.find_variable_aa(args.aa_vars, args.variable_aa)
 
 def ask_select_mode(args):
     logging.error("Please select a mode, see --help for more info.")
@@ -130,6 +125,7 @@ def main():
         "process": main_process,
         "process_gene": main_process_gene,
         "analyze": main_analyze,
+        "preplot": main_preplot,
     }
     parsers = {}
     for x, f in modes.items():
@@ -171,7 +167,7 @@ def main():
             required=True,
             help="Path to all_locustags csv file.",
         )
-    for x in ["prepare", "fasta", "process", "analyze"]:
+    for x in ["prepare", "fasta"]:
         parsers[x].add_argument(
             "--all_genes", type=str, required=True, help="Path to all_genes csv file."
         )
@@ -184,7 +180,7 @@ def main():
         parsers[x].add_argument(
             "--sel_genes", type=str, required=True, help="Path to sel_genes csv file."
         )
-    for x in ["fasta", "process", "process_gene", "analyze"]:
+    for x in ["fasta", "process", "process_gene", "analyze", "preplot"]:
         parsers[x].add_argument(
             "--out_dir",
             type=str,
@@ -197,23 +193,30 @@ def main():
         required=True,
         help="Gene ID when processing a single gene.",
     )
-    parsers["analyze"].add_argument(
-        "--aa_vars",
-        type=str,
-        required=True,
-        help="Path to pan_amino_acid_vars_df csv file.",
-    )
+    for x in ["analyze", "preplot"]:
+        parsers[x].add_argument(
+            "--aa_vars",
+            type=str,
+            required=True,
+            help="Path to pan_amino_acid_vars_df csv file.",
+        )
     parsers["analyze"].add_argument(
         "--codon_muts",
         type=str,
         required=True,
         help="Path to pan_gene_syno_non_syno_df csv file.",
     )
-    for x in ["fasta", "process", "analyze"]:
+    parsers["fasta"].add_argument(
+        "--pan",
+        action=argparse.BooleanOptionalAction,
+        help="Analyze the pangenome, instead of core.",
+    )
+    for x in ["fasta", "process", "analyze", "preplot"]:
         parsers[x].add_argument(
-            "--pan",
-            action=argparse.BooleanOptionalAction,
-            help="Analyze the pangenome, instead of core.",
+            "--gene_list",
+            type=str,
+            required=True,
+            help="Path to gene_list.txt file.",
         )
     parsers["process"].add_argument(
         "-p",
@@ -222,7 +225,18 @@ def main():
         default=1,
         help="Number of parallel processes to spawn."
     )
-
+    parsers["preplot"].add_argument(
+        "--dominant_aa",
+        type=str,
+        required=True,
+        help="Path to final_core_consensus_dominant_aa_count_df csv file.",
+    )
+    parsers["preplot"].add_argument(
+        "--variable_aa",
+        type=str,
+        required=True,
+        help="Path to final_core_pan_aa_thresh_vars_all_substitutions_sep_df csv file.",
+    )
     # parser.add_argument(
     #     "--version", action="version", version="%(prog)s " + __version__
     # )

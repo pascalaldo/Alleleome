@@ -8,3 +8,4 @@ resources/mafft-7.505-with-extensions/
 resources/ncbi-blast-2.14.0+/
 .DS_Store
 __pycache__/
+test/
