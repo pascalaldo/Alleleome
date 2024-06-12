@@ -36,8 +36,8 @@ def find_variable_aa(aa_vars_path, variable_aa_path):
     df.drop(index=df.loc[df.AA_mutation_type != 'Substitution'].index, inplace=True)
     df.reset_index(inplace=True)
 
-    df['Cons_aa'] = df['Cons_aa'].apply(list)
-    df['Var_aa'] = df['Var_aa'].apply(list)
+    df['Cons_aa'] = df['AA_cons_seq'].apply(list)
+    df['Var_aa'] = df['AA_seq_change'].apply(list)
     s = pd.Series([np.arange(x.AA_start_pos, x.AA_end_pos+1, 1) for x in df.itertuples()], index=df.index)
     df['AA_pos'] = pd.Series(data=s, index=df.index)
     df_f = df.explode(['AA_pos','Cons_aa','Var_aa'])
