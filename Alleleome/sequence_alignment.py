@@ -23,7 +23,7 @@ def align_sequences(
         from multiprocessing import Pool
         from itertools import repeat
 
-        chunksize = min(len(gene_list) // p, 500)
+        chunksize = max(min(len(gene_list) // p, 500), 1)
         logging.info(f"Parallel chunksize = {chunksize}")
         with Pool(p) as pool:
             for _ in pool.imap_unordered(align_single_gene_parallel, zip(gene_list, repeat(out_dir), repeat(sequence_type)), chunksize=chunksize):
