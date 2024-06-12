@@ -76,8 +76,7 @@ def main_fasta(args):
     write_fasta.process_selected_genes(
         all_locustag_df, locustag_list, gene_list, args.out_dir
     )
-    with open(args.gene_list, "w") as f:
-        f.writelines(gene_list)
+    load_and_qcqa.write_gene_list(gene_list, args.gene_list)
 
 
 def main_process(args):
