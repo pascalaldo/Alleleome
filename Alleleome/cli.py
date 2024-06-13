@@ -97,13 +97,24 @@ def main_analyze(args):
     amino_acid_variants.generate_amino_acid_vars(gene_list, args.out_dir, args.aa_vars)
     codon_mutations.codon_mut(gene_list, args.out_dir, args.codon_muts)
 
+
 def main_preplot(args):
     gene_list = load_and_qcqa.load_gene_list(args.gene_list)
     dominant_aa.find_dominant_aa(gene_list, args.out_dir, args.dominant_aa)
     var_aa.find_variable_aa(args.aa_vars, args.variable_aa)
+    var_aa.find_dominant_var_all(
+        args.variable_aa,
+        args.dominant_aa,
+        args.dom_var,
+        args.gaps,
+        args.filt_norm,
+        args.dom_var_out_dir,
+    )
+
 
 def ask_select_mode(args):
     logging.error("Please select a mode, see --help for more info.")
+
 
 def main():
     logging.info("Application started")
@@ -222,7 +233,7 @@ def main():
         type=int,
         required=False,
         default=1,
-        help="Number of parallel processes to spawn."
+        help="Number of parallel processes to spawn.",
     )
     parsers["preplot"].add_argument(
         "--dominant_aa",
@@ -235,6 +246,30 @@ def main():
         type=str,
         required=True,
         help="Path to final_core_pan_aa_thresh_vars_all_substitutions_sep_df csv file.",
+    )
+    parsers["preplot"].add_argument(
+        "--dom_var",
+        type=str,
+        required=True,
+        help="Path to final_pan_aa_thresh_core_genes_dominant_variant_genome_count_pos csv file.",
+    )
+    parsers["preplot"].add_argument(
+        "--gaps",
+        type=str,
+        required=True,
+        help="Path to pan_aa_thresh_core_genes_aa_pos_with_gaps csv file.",
+    )
+    parsers["preplot"].add_argument(
+        "--filt_norm",
+        type=str,
+        required=True,
+        help="Path to final_pan_aa_thresh_core_genes_dom_var_genome_count_pos_normalized csv file.",
+    )
+    parsers["preplot"].add_argument(
+        "--dom_var_out_dir",
+        type=str,
+        required=True,
+        help="Path to store per gene variants.",
     )
     # parser.add_argument(
     #     "--version", action="version", version="%(prog)s " + __version__
