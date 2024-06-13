@@ -30,6 +30,7 @@ def find_dominant_var_all(
     gaps_path,
     filt_norm_path,
     dom_var_out_dir,
+    gene_list,
 ):
     print("Start running dominant_var_all.py")
     dom_var_out_dir = Path(dom_var_out_dir)
@@ -43,10 +44,10 @@ def find_dominant_var_all(
         .value_counts()
         .reset_index(name="AA_freq")
     )
-    # df_dom = pd.read_csv(
-    #     alleleome_dir_path + "final_core_consensus_dominant_aa_count_df.csv",
-    #     low_memory=False,
-    # )
+    df_dom = pd.read_csv(
+        dominant_aa_path,
+        low_memory=False,
+    )
 
     df_dom.rename(
         columns={"AA_cons": "Amino_acid", "AA_freq": "Genome_count"}, inplace=True

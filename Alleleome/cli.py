@@ -109,6 +109,7 @@ def main_preplot(args):
         args.gaps,
         args.filt_norm,
         args.dom_var_out_dir,
+        gene_list,
     )
 
 
