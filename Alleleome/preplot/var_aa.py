@@ -43,10 +43,10 @@ def find_dominant_var_all(
         .value_counts()
         .reset_index(name="AA_freq")
     )
-    df_dom = pd.read_csv(
-        alleleome_dir_path + "final_core_consensus_dominant_aa_count_df.csv",
-        low_memory=False,
-    )
+    # df_dom = pd.read_csv(
+    #     alleleome_dir_path + "final_core_consensus_dominant_aa_count_df.csv",
+    #     low_memory=False,
+    # )
 
     df_dom.rename(
         columns={"AA_cons": "Amino_acid", "AA_freq": "Genome_count"}, inplace=True
