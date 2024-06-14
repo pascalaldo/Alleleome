@@ -3,8 +3,9 @@ import json
 from Bio import SeqIO
 from collections import defaultdict
 
-def calculate_msa_freq(gene_list, out_dir, aa_freq_path):
+def calculate_msa_freq(gene_list, out_dir, aa_freq_dir):
     out_dir = Path(out_dir)
+    aa_freq_dir = Path(aa_freq_dir)
     # start generating required files
     for gene in gene_list:
         mafft_out_file = out_dir / "output" / gene / f"mafft_amino_acid_{gene}.fasta"
@@ -38,5 +39,5 @@ def calculate_msa_freq(gene_list, out_dir, aa_freq_path):
                 data_for_json[i+1][amino_acid] = [pos_counts[amino_acid], round(pos_percentages[amino_acid], 2)]
 
         # Write to JSON file
-        with open(aa_freq_path, 'w') as f:
+        with open(aa_freq_dir / gene / "AA_freq.json", 'w') as f:
             json.dump(data_for_json, f)

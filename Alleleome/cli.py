@@ -115,7 +115,7 @@ def main_preplot(args):
     )
     dn_ds.calculate_dn_ds(args.codon_muts, args.dn_ds)
     var_aa.dom_var_histogram(args.filt_norm, args.hist)
-    msa_freq.calculate_msa_freq(gene_list, args.out_dir, args.aa_freq)
+    msa_freq.calculate_msa_freq(gene_list, args.out_dir, args.aa_freq_dir)
 
 def ask_select_mode(args):
     logging.error("Please select a mode, see --help for more info.")
@@ -290,10 +290,10 @@ def main():
         help="Path to the histogram data step_line.json.",
     )
     parsers["preplot"].add_argument(
-        "--aa_freq",
+        "--aa_freq_dir",
         type=str,
         required=True,
-        help="Path to the AA_freq.json file.",
+        help="Path to the directory to store AA_freq.json file per gene.",
     )
     # parser.add_argument(
     #     "--version", action="version", version="%(prog)s " + __version__
