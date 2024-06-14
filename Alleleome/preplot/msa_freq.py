@@ -38,6 +38,9 @@ def calculate_msa_freq(gene_list, out_dir, aa_freq_dir):
             for amino_acid in pos_counts:
                 data_for_json[i+1][amino_acid] = [pos_counts[amino_acid], round(pos_percentages[amino_acid], 2)]
 
+        aa_freq_path = aa_freq_dir / gene
+        aa_freq_path.mkdir(parents=True, exist_ok=True)
+        aa_freq_path = aa_freq_path / "AA_freq.json"
         # Write to JSON file
-        with open(aa_freq_dir / gene / "AA_freq.json", 'w') as f:
+        with open(aa_freq_paht, 'w') as f:
             json.dump(data_for_json, f)
