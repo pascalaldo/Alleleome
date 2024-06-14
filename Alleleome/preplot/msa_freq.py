@@ -5,7 +5,7 @@ def calculate_msa_freq(gene_list, out_dir, aa_freq_path):
     out_dir = Path(out_dir)
     # start generating required files
     for gene in gene_list:
-        mafft_out_file = out_dir / "output" / gene_id / f"mafft_amino_acid_{gene}.fasta"
+        mafft_out_file = out_dir / "output" / gene / f"mafft_amino_acid_{gene}.fasta"
 
         # Calculate the AA frequency          
         # Define the standard set of amino acids
