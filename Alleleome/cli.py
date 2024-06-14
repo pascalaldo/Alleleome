@@ -274,7 +274,7 @@ def main():
     parsers["preplot"].add_argument(
         "--dom_var_out_dir",
         type=str,
-        required=True,
+        required=False,
         help="Path to store per gene variants.",
     )
     parsers["preplot"].add_argument(
