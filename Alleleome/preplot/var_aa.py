@@ -40,8 +40,6 @@ def find_dominant_var_all(
     # This is a file containing all separeted substitution positions along with variant details
     df = pd.read_csv(variable_aa_path, low_memory=False)
 
-    logging.info("Intermediate: preplot: find_dominant_var_all: read DF")
-
     df_var = (
         df[["AA_pos", "Var_aa", "Sequence_type"]]
         .groupby(df["Gene"])
@@ -49,12 +47,10 @@ def find_dominant_var_all(
         .reset_index(name="AA_freq")
     )
 
-    logging.info("Intermediate: preplot: find_dominant_var_all: groupby")
     df_dom = pd.read_csv(
         dominant_aa_path,
         low_memory=False,
     )
-    logging.info("Intermediate: preplot: find_dominant_var_all: read second DF")
 
     df_dom.rename(
         columns={"AA_cons": "Amino_acid", "AA_freq": "Genome_count"}, inplace=True
@@ -64,43 +60,34 @@ def find_dominant_var_all(
     )
 
     df_dom_var = pd.concat([df_var, df_dom]).sort_values("Gene")
-    logging.info("Intermediate: preplot: find_dominant_var_all: concat DF")
 
     df_dom_var.to_csv(dom_var_path)
-    logging.info("Intermediate: preplot: find_dominant_var_all: write DF")
 
     df_gap = df_dom_var.loc[(df_dom_var["Amino_acid"] == "-"), ["Gene", "AA_pos"]]
-    logging.info("Intermediate: preplot: find_dominant_var_all: select gaps DF")
     df_gap.to_csv(gaps_path)
-    logging.info("Intermediate: preplot: find_dominant_var_all: write gaps DF")
 
     df_filt = df_dom_var.loc[(df_dom_var["Amino_acid"] != "-"), :]
-    logging.info("Intermediate: preplot: find_dominant_var_all: select non gaps DF")
+
     cols = ["Genome_count"]
     g = df_filt.groupby("Gene")[cols]
-    logging.info("Intermediate: preplot: find_dominant_var_all: filt groupby DF")
     min1 = g.transform("min")
     max1 = g.transform("max")
-    logging.info("Intermediate: preplot: find_dominant_var_all: min, max DF")
 
     df_norm = df_filt.join(df_filt[cols].sub(min1).div(max1 - min1).add_suffix("_norm"))
-    logging.info("Intermediate: preplot: find_dominant_var_all: norm DF")
 
     df_norm["Genome_count_norm"] = df_norm["Genome_count_norm"].apply(
         lambda x: round(x, 2)
     )
-    logging.info("Intermediate: preplot: find_dominant_var_all: round norm DF")
     df_norm.to_csv(filt_norm_path)
-    logging.info("Intermediate: preplot: find_dominant_var_all: write norm DF")
 
-    # for getting the single gene details
-    for gene in gene_list:
-        gene_path = dom_var_out_dir / gene
-        gene_path.mkdir(parents=True, exist_ok=True)
+    # # for getting the single gene details
+    # for gene in gene_list:
+    #     gene_path = dom_var_out_dir / gene
+    #     gene_path.mkdir(parents=True, exist_ok=True)
 
-        df_norm[df_norm.Gene == gene].to_csv(
-            gene_path / f"{gene}_pan_aa_thresh_core_dom_var_pos.csv"
-        )
+    #     df_norm[df_norm.Gene == gene].to_csv(
+    #         gene_path / f"{gene}_pan_aa_thresh_core_dom_var_pos.csv"
+    #     )
     logging.info("Finishing: preplot: find_dominant_var_all")
 
 def dom_var_histogram(filt_norm_path, hist_path):
