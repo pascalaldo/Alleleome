@@ -215,12 +215,13 @@ def main():
             required=True,
             help="Path to pan_amino_acid_vars_df csv file.",
         )
-    parsers["analyze"].add_argument(
-        "--codon_muts",
-        type=str,
-        required=True,
-        help="Path to pan_gene_syno_non_syno_df csv file.",
-    )
+    for x in ["analyze", "preplot"]:
+        parsers[x].add_argument(
+            "--codon_muts",
+            type=str,
+            required=True,
+            help="Path to pan_gene_syno_non_syno_df csv file.",
+        )
     parsers["fasta"].add_argument(
         "--pan",
         action=argparse.BooleanOptionalAction,
