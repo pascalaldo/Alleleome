@@ -14,6 +14,7 @@ from . import (
 from .preplot import (
     dominant_aa,
     var_aa,
+    msa_freq,
 )
 
 # log_directory = "./log"
@@ -111,7 +112,9 @@ def main_preplot(args):
         args.dom_var_out_dir,
         gene_list,
     )
-
+    dn_ds.calculate_dn_ds(args.codon_muts, args.dn_ds)
+    var_aa.dom_var_histogram(args.filt_norm, args.hist)
+    msa_freq.calculate_msa_freq(gene_list, args.out_dir, args.aa_freq)
 
 def ask_select_mode(args):
     logging.error("Please select a mode, see --help for more info.")
@@ -271,6 +274,24 @@ def main():
         type=str,
         required=True,
         help="Path to store per gene variants.",
+    )
+    parsers["preplot"].add_argument(
+        "--dn_ds",
+        type=str,
+        required=True,
+        help="Path to final_dn_ds_count_per_gene csv file.",
+    )
+    parsers["preplot"].add_argument(
+        "--hist",
+        type=str,
+        required=True,
+        help="Path to the histogram data step_line.json.",
+    )
+    parsers["preplot"].add_argument(
+        "--aa_freq",
+        type=str,
+        required=True,
+        help="Path to the AA_freq.json file.",
     )
     # parser.add_argument(
     #     "--version", action="version", version="%(prog)s " + __version__

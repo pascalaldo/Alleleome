@@ -1,7 +1,7 @@
 import pandas as pd
 import numpy as np
 from pathlib import Path
-
+import json
 
 def find_variable_aa(aa_vars_path, variable_aa_path):
     print("Start running var_aa.py")
@@ -84,3 +84,28 @@ def find_dominant_var_all(
         df_norm[df_norm.Gene == gene].to_csv(
             gene_path / f"{gene}_pan_aa_thresh_core_dom_var_pos.csv"
         )
+
+def dom_var_histogram(filt_norm_path, hist_path):
+    # Read the data
+    df = pd.read_csv(filt_norm_path)
+
+    bins = np.arange(0, 1.01, 0.05)
+    dominant_count, dominant_bins = np.histogram(df.loc[df["Sequence_type"] == "Dominant", "Genome_count_norm"], bins=bins)
+    variant_count, variant_bins = np.histogram(df.loc[df["Sequence_type"] == "Variant", "Genome_count_norm"], bins=bins)
+
+    # Preparing data for Highcharts
+    dominant_data_highcharts = [{'x': float(x), 'y': int(y)} for x, y in zip(dominant_bins, dominant_counts)]
+    variant_data_highcharts = [{'x': float(x), 'y': int(y)} for x, y in zip(variant_bins, variant_counts)]
+
+    # For plotting repat last y values
+    dominant_data_highcharts.append({'x': 1.0, 'y': dominant_data_highcharts[-1]['y']})
+    variant_data_highcharts.append({'x': 1.0, 'y': variant_data_highcharts[-1]['y']})
+
+    # Combine into one dictionary
+    highcharts_data = {
+        "dominant": dominant_data_highcharts,
+        "variant": variant_data_highcharts
+    }
+
+    with open(hist_path, 'w') as f:
+        json.dump(highcharts_data, f)
