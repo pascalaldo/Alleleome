@@ -2,7 +2,7 @@ import pandas as pd
 from pathlib import Path
 
 def calculate_dn_ds(codon_muts_path, dn_ds_path):
-    print('Start running dn_ds_count.py')
+    logging.info("Starting: preplot: calculate_dn_ds")
     
     df = pd.read_csv(codon_muts_path)
     df = df.groupby(['Gene','Cons_codon','Query_codon','Codon_position','AA_mutation_effect'])['GCF_id'].count().reset_index()
@@ -19,3 +19,4 @@ def calculate_dn_ds(codon_muts_path, dn_ds_path):
 
     df_per_gene = df_per_gene.dropna(axis=0)
     df_per_gene.to_csv(dn_ds_path)
+    logging.info("Finishing: preplot: calculate_dn_ds")

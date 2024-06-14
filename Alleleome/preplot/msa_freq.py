@@ -2,8 +2,10 @@ from pathlib import Path
 import json
 from Bio import SeqIO
 from collections import defaultdict
+import logging
 
 def calculate_msa_freq(gene_list, out_dir, aa_freq_dir):
+    logging.info("Starting: preplot: calculate_msa_freq")
     out_dir = Path(out_dir)
     aa_freq_dir = Path(aa_freq_dir)
     # start generating required files
@@ -44,3 +46,4 @@ def calculate_msa_freq(gene_list, out_dir, aa_freq_dir):
         # Write to JSON file
         with open(aa_freq_path, 'w') as f:
             json.dump(data_for_json, f)
+    logging.info("Finishing: preplot: calculate_msa_freq")

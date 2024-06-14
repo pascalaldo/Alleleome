@@ -4,7 +4,7 @@ from pathlib import Path
 import json
 
 def find_variable_aa(aa_vars_path, variable_aa_path):
-    print("Start running var_aa.py")
+    logging.info("Starting: preplot: find_variable_aa")
 
     df = pd.read_csv(aa_vars_path, na_filter=False)
 
@@ -21,6 +21,7 @@ def find_variable_aa(aa_vars_path, variable_aa_path):
     df_f = df.explode(["AA_pos", "Cons_aa", "Var_aa"])
 
     df_f.to_csv(variable_aa_path)
+    logging.info("Finishing: preplot: find_variable_aa")
 
 
 def find_dominant_var_all(
@@ -32,7 +33,7 @@ def find_dominant_var_all(
     dom_var_out_dir,
     gene_list,
 ):
-    print("Start running dominant_var_all.py")
+    logging.info("Starting: preplot: find_dominant_var_all")
     dom_var_out_dir = Path(dom_var_out_dir)
 
     # This is a file containing all separeted substitution positions along with variant details
@@ -84,8 +85,10 @@ def find_dominant_var_all(
         df_norm[df_norm.Gene == gene].to_csv(
             gene_path / f"{gene}_pan_aa_thresh_core_dom_var_pos.csv"
         )
+    logging.info("Finishing: preplot: find_dominant_var_all")
 
 def dom_var_histogram(filt_norm_path, hist_path):
+    logging.info("Starting: preplot: dom_var_histogram")
     # Read the data
     df = pd.read_csv(filt_norm_path)
 
@@ -109,3 +112,4 @@ def dom_var_histogram(filt_norm_path, hist_path):
 
     with open(hist_path, 'w') as f:
         json.dump(highcharts_data, f)
+    logging.info("Finishing: preplot: dom_var_histogram")
