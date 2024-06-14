@@ -35,7 +35,7 @@ def find_dominant_var_all(
     gene_list,
 ):
     logging.info("Starting: preplot: find_dominant_var_all")
-    dom_var_out_dir = Path(dom_var_out_dir)
+    # dom_var_out_dir = Path(dom_var_out_dir)
 
     # This is a file containing all separeted substitution positions along with variant details
     df = pd.read_csv(variable_aa_path, low_memory=False)
