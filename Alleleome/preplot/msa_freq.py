@@ -42,5 +42,5 @@ def calculate_msa_freq(gene_list, out_dir, aa_freq_dir):
         aa_freq_path.mkdir(parents=True, exist_ok=True)
         aa_freq_path = aa_freq_path / "AA_freq.json"
         # Write to JSON file
-        with open(aa_freq_paht, 'w') as f:
+        with open(aa_freq_path, 'w') as f:
             json.dump(data_for_json, f)
