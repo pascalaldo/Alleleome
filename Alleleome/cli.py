@@ -14,6 +14,7 @@ from . import (
 from .preplot import (
     dominant_aa,
     var_aa,
+    dn_ds,
     msa_freq,
 )
 
