@@ -90,8 +90,8 @@ def dom_var_histogram(filt_norm_path, hist_path):
     df = pd.read_csv(filt_norm_path)
 
     bins = np.arange(0, 1.01, 0.05)
-    dominant_count, dominant_bins = np.histogram(df.loc[df["Sequence_type"] == "Dominant", "Genome_count_norm"], bins=bins)
-    variant_count, variant_bins = np.histogram(df.loc[df["Sequence_type"] == "Variant", "Genome_count_norm"], bins=bins)
+    dominant_counts, dominant_bins = np.histogram(df.loc[df["Sequence_type"] == "Dominant", "Genome_count_norm"], bins=bins)
+    variant_counts, variant_bins = np.histogram(df.loc[df["Sequence_type"] == "Variant", "Genome_count_norm"], bins=bins)
 
     # Preparing data for Highcharts
     dominant_data_highcharts = [{'x': float(x), 'y': int(y)} for x, y in zip(dominant_bins, dominant_counts)]
