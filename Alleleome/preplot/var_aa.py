@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from pathlib import Path
 import json
+import logging
 
 def find_variable_aa(aa_vars_path, variable_aa_path):
     logging.info("Starting: preplot: find_variable_aa")
