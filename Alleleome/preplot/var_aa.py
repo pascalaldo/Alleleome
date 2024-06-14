@@ -35,7 +35,7 @@ def find_dominant_var_all(
     gene_list,
 ):
     logging.info("Starting: preplot: find_dominant_var_all")
-    # dom_var_out_dir = Path(dom_var_out_dir)
+    dom_var_out_dir = Path(dom_var_out_dir)
 
     # This is a file containing all separeted substitution positions along with variant details
     df = pd.read_csv(variable_aa_path, low_memory=False)
@@ -80,14 +80,14 @@ def find_dominant_var_all(
     )
     df_norm.to_csv(filt_norm_path)
 
-    # # for getting the single gene details
-    # for gene in gene_list:
-    #     gene_path = dom_var_out_dir / gene
-    #     gene_path.mkdir(parents=True, exist_ok=True)
+    # for getting the single gene details
+    for gene in gene_list:
+        gene_path = dom_var_out_dir / gene
+        gene_path.mkdir(parents=True, exist_ok=True)
 
-    #     df_norm[df_norm.Gene == gene].to_csv(
-    #         gene_path / f"{gene}_pan_aa_thresh_core_dom_var_pos.csv"
-    #     )
+        df_norm[df_norm.Gene == gene].to_csv(
+            gene_path / f"{gene}_pan_aa_thresh_core_dom_var_pos.csv"
+        )
     logging.info("Finishing: preplot: find_dominant_var_all")
 
 def dom_var_histogram(filt_norm_path, hist_path):
