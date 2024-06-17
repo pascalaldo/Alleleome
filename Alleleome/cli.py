@@ -113,7 +113,7 @@ def main_preplot(args):
         args.dom_var_out_dir,
         gene_list,
     )
-    dn_ds.calculate_dn_ds(args.codon_muts, args.dn_ds)
+    dn_ds.calculate_dn_ds(args.codon_muts, args.dn_ds, args.dn_ds_json)
     var_aa.dom_var_histogram(args.filt_norm, args.hist)
     msa_freq.calculate_msa_freq(gene_list, args.out_dir, args.aa_freq_dir)
 
@@ -282,6 +282,12 @@ def main():
         type=str,
         required=True,
         help="Path to final_dn_ds_count_per_gene csv file.",
+    )
+    parsers["preplot"].add_argument(
+        "--dn_ds_json",
+        type=str,
+        required=True,
+        help="Path to dn_ds.json file.",
     )
     parsers["preplot"].add_argument(
         "--hist",
