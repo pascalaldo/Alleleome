@@ -85,8 +85,13 @@ def find_dominant_var_all(
         gene_path = dom_var_out_dir / gene
         gene_path.mkdir(parents=True, exist_ok=True)
 
+        out_file = gene_path / f"{gene}_pan_aa_thresh_core_dom_var_pos.csv"
+        if out_file.is_file():
+            logging.info(f"Skipping {gene}_pan_aa_thresh_core_dom_var_pos.csv, because file already exists.")
+            continue
+
         df_norm[df_norm.Gene == gene].to_csv(
-            gene_path / f"{gene}_pan_aa_thresh_core_dom_var_pos.csv"
+            out_file
         )
     logging.info("Finishing: preplot: find_dominant_var_all")
 
