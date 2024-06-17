@@ -53,8 +53,11 @@ def build_single_gene_consensus(gene_id, out_dir):
 
 
 def generate_consensus(gene_id, input_path, mafft_output_path, consensus_output_path):
+    if mafft_output_path.is_file() and consensus_output_path.is_file():
+        logging.info(f"Outputs for {gene_id} already present, skipping.")
+        return
     if os.stat(input_path).st_size == 0:
-        print("The file is empty")
+        logging.info(f"The input file is empty for {gene_id}")
         return
 
     mafft_cline = MafftCommandline(input=input_path)

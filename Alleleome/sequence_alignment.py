@@ -38,7 +38,10 @@ def align_single_gene_parallel(args):
 def align_single_gene(gene_id, out_dir, sequence_type="nucleotide"):
     out_dir = Path(out_dir)
     ext, blast = {"nucleotide": ("fna", "blastn"), "amino_acid": ("faa", "blastp")}[sequence_type]
-    out_file_name = out_dir / "output" / gene_id / f"{sequence_type}_blast_out_{gene_id}.xml"
+    out_file = out_dir / "output" / gene_id / f"{sequence_type}_blast_out_{gene_id}.xml"
+    if out_file.is_file():
+        logging.info(f"Outputs for {gene_id} already present, skipping.")
+        return
     args = (
         blast,
         "-query",
@@ -48,6 +51,6 @@ def align_single_gene(gene_id, out_dir, sequence_type="nucleotide"):
         "-outfmt",
         "5",
     )
-    with open(out_file_name, "w+") as outfile:
-        subprocess.run(args, stdout=outfile)
+    with open(out_file, "w+") as f:
+        subprocess.run(args, stdout=f)
     
