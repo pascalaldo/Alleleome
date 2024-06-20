@@ -60,7 +60,7 @@ def generate_consensus(gene_id, input_path, mafft_output_path, consensus_output_
         logging.info(f"The input file is empty for {gene_id}")
         return
 
-    mafft_cline = MafftCommandline(input=input_path)
+    mafft_cline = MafftCommandline(input=f"\"{input_path}\"")
     stdout, stderr = mafft_cline()
 
     with open(mafft_output_path, "w") as handle:
