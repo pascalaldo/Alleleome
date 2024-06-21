@@ -81,7 +81,9 @@ def find_dominant_var_all(
     df_norm.to_csv(filt_norm_path)
 
     # for getting the single gene details
-    for gene in gene_list:
+    for gene, group in df.groupby('Gene'):
+        if not gene in gene_list:
+            continue
         gene_path = dom_var_out_dir / gene
         gene_path.mkdir(parents=True, exist_ok=True)
 
@@ -89,10 +91,10 @@ def find_dominant_var_all(
         if out_file.is_file():
             logging.info(f"Skipping {gene}_pan_aa_thresh_core_dom_var_pos.csv, because file already exists.")
             continue
-
-        df_norm[df_norm.Gene == gene].to_csv(
-            out_file
-        )
+        group.to_csv(out_file)
+        # df_norm[df_norm.Gene == gene].to_csv(
+        #     out_file
+        # )
     logging.info("Finishing: preplot: find_dominant_var_all")
 
 def dom_var_histogram(filt_norm_path, hist_path):
