@@ -1,7 +1,7 @@
 import logging
 import os
 from pathlib import Path
-
+import gzip
 import pandas as pd
 from Bio.Blast import NCBIXML
 from Bio.Seq import Seq
@@ -87,10 +87,10 @@ def codon_mut(
             out_dir / "output" / gene
         )
         blast_output_file = blast_output_dir / (
-            "nucleotide_blast_out_" + gene + ".xml"
+            "nucleotide_blast_out_" + gene + ".xml.gz"
         )
 
-        for record in NCBIXML.parse(open(blast_output_file)):
+        for record in NCBIXML.parse(gzip.open(blast_output_file, "rb")):
             if len(record.alignments) > 0:
                 # Description of available members: https://biopython.org/docs/1.75/api/Bio.Blast.Record.html
                 # subject_match_start_pos = record.alignments[0].hsps[0].sbjct_start

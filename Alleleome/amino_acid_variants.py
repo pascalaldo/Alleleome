@@ -3,7 +3,7 @@ import logging
 from itertools import groupby
 from operator import itemgetter
 from pathlib import Path
-
+import gzip
 import pandas as pd
 from Bio.Blast import NCBIXML
 
@@ -158,10 +158,10 @@ def generate_amino_acid_vars(
             out_dir / "output" / gene
         )
         blast_output_file_path = blast_output_dir / (
-            "amino_acid_blast_out_" + gene + ".xml"
+            "amino_acid_blast_out_" + gene + ".xml.gz"
         )
 
-        for record in NCBIXML.parse(open(blast_output_file_path)):
+        for record in NCBIXML.parse(gzip.open(blast_output_file_path, "rb")):
             if len(record.alignments) > 0:
                 # Description of available members: https://biopython.org/docs/1.75/api/Bio.Blast.Record.html
                 subject_match_start_pos = record.alignments[0].hsps[0].sbjct_start

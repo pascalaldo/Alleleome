@@ -3,6 +3,7 @@ import json
 from Bio import SeqIO
 from collections import defaultdict
 import logging
+import gzip
 
 def calculate_msa_freq(gene_list, out_dir, aa_freq_dir):
     logging.info("Starting: preplot: calculate_msa_freq")
@@ -10,14 +11,15 @@ def calculate_msa_freq(gene_list, out_dir, aa_freq_dir):
     aa_freq_dir = Path(aa_freq_dir)
     # start generating required files
     for gene in gene_list:
-        mafft_out_file = out_dir / "output" / gene / f"mafft_amino_acid_{gene}.fasta"
+        mafft_out_file = out_dir / "output" / gene / f"mafft_amino_acid_{gene}.fasta.gz"
 
         # Calculate the AA frequency          
         # Define the standard set of amino acids
         amino_acids = "ACDEFGHIKLMNPQRSTVWY"
 
         # Read the fasta file
-        sequences = [str(record.seq) for record in SeqIO.parse(mafft_out_file, 'fasta')]
+        with open(mafft_out_file, "rb") as f:
+            sequences = [str(record.seq) for record in SeqIO.parse(f, 'fasta')]
 
         # Assume the sequences are already aligned
         assert all(len(s) == len(sequences[0]) for s in sequences)

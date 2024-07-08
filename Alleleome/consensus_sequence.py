@@ -2,7 +2,7 @@
 import logging
 import os
 from pathlib import Path
-
+import gzip
 import pandas as pd
 from Bio import AlignIO
 from Bio.Align import AlignInfo
@@ -47,8 +47,8 @@ def build_single_gene_consensus(gene_id, out_dir):
         generate_consensus(
             gene_id,
             alignment_input_dir / f"pan_genes.{ext}",
-            alignment_output_dir / f"mafft_{cons_type}_{gene_id}.fasta",
-            alignment_output_dir / f"{cons_type}_consensus_{gene_id}.{ext}"
+            alignment_output_dir / f"mafft_{cons_type}_{gene_id}.fasta.gz",
+            alignment_output_dir / f"{cons_type}_consensus_{gene_id}.{ext}.gz"
         )
 
 
@@ -63,7 +63,7 @@ def generate_consensus(gene_id, input_path, mafft_output_path, consensus_output_
     mafft_cline = MafftCommandline(input=f"\"{input_path}\"")
     stdout, stderr = mafft_cline()
 
-    with open(mafft_output_path, "w") as handle:
+    with gzip.open(mafft_output_path, "wb") as handle:
         handle.write(stdout)
 
     myalign = AlignIO.read(mafft_output_path, "fasta")
@@ -71,6 +71,6 @@ def generate_consensus(gene_id, input_path, mafft_output_path, consensus_output_
     consensus = summary.dumb_consensus(threshold=0.5)
     seq = str(consensus).upper()
 
-    with open(consensus_output_path, "w") as consensus_file:
+    with gzip.open(consensus_output_path, "wb") as consensus_file:
         consensus_seq = "".join([">" + gene_id + "\n" + seq])
         consensus_file.write(consensus_seq)

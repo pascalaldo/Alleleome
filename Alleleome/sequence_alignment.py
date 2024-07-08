@@ -3,7 +3,7 @@
 import logging
 import subprocess
 from pathlib import Path
-
+import gzip
 import pandas as pd
 
 
@@ -38,7 +38,7 @@ def align_single_gene_parallel(args):
 def align_single_gene(gene_id, out_dir, sequence_type="nucleotide"):
     out_dir = Path(out_dir)
     ext, blast = {"nucleotide": ("fna", "blastn"), "amino_acid": ("faa", "blastp")}[sequence_type]
-    out_file = out_dir / "output" / gene_id / f"{sequence_type}_blast_out_{gene_id}.xml"
+    out_file = out_dir / "output" / gene_id / f"{sequence_type}_blast_out_{gene_id}.xml.gz"
     if out_file.is_file():
         logging.info(f"Outputs for {gene_id} already present, skipping.")
         return
@@ -51,6 +51,6 @@ def align_single_gene(gene_id, out_dir, sequence_type="nucleotide"):
         "-outfmt",
         "5",
     )
-    with open(out_file, "w+") as f:
+    with gzip.open(out_file, "wb") as f:
         subprocess.run(args, stdout=f)
     
