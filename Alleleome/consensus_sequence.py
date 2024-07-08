@@ -66,7 +66,8 @@ def generate_consensus(gene_id, input_path, mafft_output_path, consensus_output_
     with gzip.open(mafft_output_path, "wt") as handle:
         handle.write(stdout)
 
-    myalign = AlignIO.read(mafft_output_path, "fasta")
+    with gzip.open(mafft_output_path, "rt") as handle:
+        myalign = AlignIO.read(handle, "fasta")
     summary = AlignInfo.SummaryInfo(myalign)
     consensus = summary.dumb_consensus(threshold=0.5)
     seq = str(consensus).upper()
