@@ -18,7 +18,7 @@ def calculate_msa_freq(gene_list, out_dir, aa_freq_dir):
         amino_acids = "ACDEFGHIKLMNPQRSTVWY"
 
         # Read the fasta file
-        with open(mafft_out_file, "rb") as f:
+        with gzip.open(mafft_out_file, "r") as f:
             sequences = [str(record.seq) for record in SeqIO.parse(f, 'fasta')]
 
         # Assume the sequences are already aligned
