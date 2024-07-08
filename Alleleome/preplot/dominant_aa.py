@@ -14,7 +14,7 @@ def find_dominant_aa(gene_list, out_dir, dominant_aa_path):
     for gene in gene_list:
         msa_file_name = out_dir / "output" / gene / f'mafft_amino_acid_{gene}.fasta.gz'
         # logging.info(msa_file_name)
-        with gzip.open(msa_file_name, "r") as f:
+        with gzip.open(msa_file_name, "rt") as f:
             aln = AlignIO.read(f, 'fasta')
             for i in range(aln.get_alignment_length()):
                 count = Counter(aln[:, i]).most_common(1)

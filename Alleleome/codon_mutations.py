@@ -90,7 +90,7 @@ def codon_mut(
             "nucleotide_blast_out_" + gene + ".xml.gz"
         )
 
-        for record in NCBIXML.parse(gzip.open(blast_output_file, "r")):
+        for record in NCBIXML.parse(gzip.open(blast_output_file, "rt")):
             if len(record.alignments) > 0:
                 # Description of available members: https://biopython.org/docs/1.75/api/Bio.Blast.Record.html
                 # subject_match_start_pos = record.alignments[0].hsps[0].sbjct_start

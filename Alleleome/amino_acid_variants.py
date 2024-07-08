@@ -161,7 +161,7 @@ def generate_amino_acid_vars(
             "amino_acid_blast_out_" + gene + ".xml.gz"
         )
 
-        for record in NCBIXML.parse(gzip.open(blast_output_file_path, "r")):
+        for record in NCBIXML.parse(gzip.open(blast_output_file_path, "rt")):
             if len(record.alignments) > 0:
                 # Description of available members: https://biopython.org/docs/1.75/api/Bio.Blast.Record.html
                 subject_match_start_pos = record.alignments[0].hsps[0].sbjct_start

@@ -63,7 +63,7 @@ def generate_consensus(gene_id, input_path, mafft_output_path, consensus_output_
     mafft_cline = MafftCommandline(input=f"\"{input_path}\"")
     stdout, stderr = mafft_cline()
 
-    with gzip.open(mafft_output_path, "w") as handle:
+    with gzip.open(mafft_output_path, "wt") as handle:
         handle.write(stdout)
 
     myalign = AlignIO.read(mafft_output_path, "fasta")
@@ -71,6 +71,6 @@ def generate_consensus(gene_id, input_path, mafft_output_path, consensus_output_
     consensus = summary.dumb_consensus(threshold=0.5)
     seq = str(consensus).upper()
 
-    with gzip.open(consensus_output_path, "w") as consensus_file:
+    with gzip.open(consensus_output_path, "wt") as consensus_file:
         consensus_seq = "".join([">" + gene_id + "\n" + seq])
         consensus_file.write(consensus_seq)
