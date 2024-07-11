@@ -3,6 +3,7 @@ from Bio import AlignIO
 from pathlib import Path
 from collections import Counter
 import logging
+import gzip
 
 def find_dominant_aa(gene_list, out_dir, dominant_aa_path):
     logging.info("Starting: preplot: find_dominant_aa")
