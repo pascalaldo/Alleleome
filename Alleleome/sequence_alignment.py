@@ -4,6 +4,7 @@ import logging
 import subprocess
 from pathlib import Path
 import gzip
+import shutil
 import pandas as pd
 
 
@@ -39,6 +40,8 @@ def align_single_gene(gene_id, out_dir, sequence_type="nucleotide"):
     out_dir = Path(out_dir)
     ext, blast = {"nucleotide": ("fna", "blastn"), "amino_acid": ("faa", "blastp")}[sequence_type]
     out_file = out_dir / "output" / gene_id / f"{sequence_type}_blast_out_{gene_id}.xml.gz"
+    consensus_file = out_dir / "output" / gene_id / f"{sequence_type}_consensus_{gene_id}.{ext}"
+
     if out_file.is_file():
         logging.info(f"Outputs for {gene_id} already present, skipping.")
         return
@@ -47,10 +50,15 @@ def align_single_gene(gene_id, out_dir, sequence_type="nucleotide"):
         "-query",
         out_dir / "input" / gene_id / f"pan_genes.{ext}",
         "-subject",
-        out_dir / "output" / gene_id / f"{sequence_type}_consensus_{gene_id}.{ext}",
+        consensus_file,
         "-outfmt",
         "5",
     )
+
+    with gzip.open(f"{str(consensus_file)}.gz", 'rb') as f_in:
+        with open(consensus_file, 'wb') as f_out:
+            shutil.copyfileobj(f_in, f_out)
+
     with gzip.open(out_file, "wt") as f:
         result = subprocess.run(
             args,
@@ -58,3 +66,4 @@ def align_single_gene(gene_id, out_dir, sequence_type="nucleotide"):
             text=True,
         )
         f.write(result.stdout)
+    consensus_file.unlink()
