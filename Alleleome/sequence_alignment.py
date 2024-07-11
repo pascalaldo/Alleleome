@@ -52,5 +52,9 @@ def align_single_gene(gene_id, out_dir, sequence_type="nucleotide"):
         "5",
     )
     with gzip.open(out_file, "wt") as f:
-        subprocess.run(args, stdout=f)
-    
+        result = subprocess.run(
+            args,
+            capture_output=True,
+            text=True,
+        )
+        f.write(result.stdout)
