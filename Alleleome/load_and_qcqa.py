@@ -56,7 +56,7 @@ def load(path):
 def save(df, path):
     return df.to_csv(path)
 
-def parse_genbank_files(df_gene_presence_locustag, gbk_folder):
+def parse_genbank_files(df_gene_presence_locustag, gbk_folder, tmp_folder):
     """
     Parse GenBank files.
 
@@ -67,6 +67,9 @@ def parse_genbank_files(df_gene_presence_locustag, gbk_folder):
     Returns:
     DataFrame: DataFrame with parsed GenBank data
     """
+    tmp_folder = Path(tmp_folder)
+    tmp_folder.mkdir(parents=True, exist_ok=True)
+    counter = 0
     all_locustag_list = []
     for genome_id in list(df_gene_presence_locustag.columns):
         genbank_file_path = Path(gbk_folder) / f"{genome_id}.gbk"
@@ -93,16 +96,28 @@ def parse_genbank_files(df_gene_presence_locustag, gbk_folder):
                     int(feature.location.start)
                 )  # Start position
                 genome_data_list.append(int(feature.location.end))  # End position
-                genome_data_list.append(
-                    str(feature.extract(record.seq))
-                )  # Nucleotide Seq
-                if "translation" in feature.qualifiers.keys():
-                    genome_data_list.append(
-                        feature.qualifiers["translation"][0]
-                    )  # Amino Acid Seq
-                else:
-                    genome_data_list.append("")
+
+                nuc_record = SeqRecord(
+                    feature.extract(record.seq),
+                    id=genome_data_list[0], # locus tag
+                    description=f"{(genome_data_list[3] if genome_data_list[3] != '' else 'Unknown')} | {genome_data_list[1]}",
+                )
+                with open(tmp_folder / f"{counter}.fna", "w") as f:
+                    SeqIO.write(nuc_record, f, "fasta")
+
+                aa_record = SeqRecord(
+                    feature.qualifiers["translation"][0] if "translation" in feature.qualifiers.keys() else "",
+                    id=genome_data_list[0], # locus tag
+                    description=f"{(genome_data_list[3] if genome_data_list[3] != '' else 'Unknown')} | {genome_data_list[1]}",
+                )
+                with open(tmp_folder / f"{counter}.faa", "w") as f:
+                    SeqIO.write(aa_record, f, "fasta")
+                
+                genome_data_list.append(counter)
+
                 all_locustag_list.append(genome_data_list)
+                counter += 1
+
     all_locustag_df = pd.DataFrame(
         all_locustag_list,
         columns=[
@@ -112,8 +127,7 @@ def parse_genbank_files(df_gene_presence_locustag, gbk_folder):
             "Prokka_Annotation",
             "Start_Position",
             "End_Position",
-            "Nucleotide_Seq",
-            "Amino_Acid_Seq",
+            "File_ID",
         ],
     )
     # Use genome + locus tag as index, since there may be duplicate locus tags accross genomes.

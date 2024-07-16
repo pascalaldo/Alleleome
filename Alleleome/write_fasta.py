@@ -1,5 +1,6 @@
 import logging
 from pathlib import Path
+import shutil
 
 import pandas as pd
 
@@ -8,35 +9,26 @@ from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 
 def process_gene(
-    gene_id, sel_locustag_df, fna_path, faa_path
+    gene_id, sel_locustag_df, fna_path, faa_path, tmp_folder
 ):
     logging.info(f"   Processing gene: {gene_id}")
 
     filtered_df = sel_locustag_df[sel_locustag_df["Gene_ID"] == gene_id]
-    nucleotide_records = [
-        SeqRecord(
-            Seq(row["Nucleotide_Seq"]),
-            id=row["Locus_Tag"],
-            description=f"{row.get('Prokka_Annotation', 'Unknown')} | {row['Genome_ID']}",
-        )
-        for idx, row in filtered_df.iterrows()
-    ]
-    amino_acid_records = [
-        SeqRecord(
-            Seq(row["Amino_Acid_Seq"]),
-            id=row["Locus_Tag"],
-            description=f"{row.get('Prokka_Annotation', 'Unknown')} | {row['Genome_ID']}",
-        )
-        for idx, row in filtered_df.iterrows()
-    ]
-    with open(fna_path, "w") as fasta_n_file:
-        SeqIO.write(nucleotide_records, fasta_n_file, "fasta")
-    with open(faa_path, "w") as fasta_aa_file:
-        SeqIO.write(amino_acid_records, fasta_aa_file, "fasta")
+
+    files = [(tmp_folder / f"{int(file_id)}") for file_id in filtered_df["File_ID"]]
+
+    for seq_type, out_file in [(".fna", fna_path), (".faa", faa_path)]:
+        with open(out_file, "w") as f_out:
+            for in_file_base in files:
+                in_file = in_file_base.with_suffix(seq_type)
+                with open(in_file, "r") as f_in:
+                    s = f_in.readlines()
+                    f_out.writelines(s)
     logging.info(f"   Finished gene: {gene_id}")
 
-def process_selected_genes(all_locustag_df, locustag_list, gene_list, out_dir):
+def process_selected_genes(all_locustag_df, locustag_list, gene_list, out_dir, tmp_folder):
     out_dir = Path(out_dir)
+    tmp_folder = Path(tmp_folder)
     sel_locustag_df = all_locustag_df.loc[locustag_list]
     
     for gene in gene_list:
@@ -46,4 +38,4 @@ def process_selected_genes(all_locustag_df, locustag_list, gene_list, out_dir):
         faa_path = gene_dir / "pan_genes.faa"
         if fna_path.is_file() and faa_path.is_file():
             continue
-        process_gene(gene, sel_locustag_df, fna_path, faa_path)
+        process_gene(gene, sel_locustag_df, fna_path, faa_path, tmp_folder)
