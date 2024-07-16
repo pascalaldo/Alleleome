@@ -105,6 +105,8 @@ def parse_genbank_files(df_gene_presence_locustag, gbk_folder, tmp_folder):
                 with open(tmp_folder / f"{counter}.fna", "w") as f:
                     SeqIO.write(nuc_record, f, "fasta")
 
+                genome_data_list.append(len(nuc_record))
+
                 aa_record = SeqRecord(
                     feature.qualifiers["translation"][0] if "translation" in feature.qualifiers.keys() else "",
                     id=genome_data_list[0], # locus tag
@@ -127,6 +129,7 @@ def parse_genbank_files(df_gene_presence_locustag, gbk_folder, tmp_folder):
             "Prokka_Annotation",
             "Start_Position",
             "End_Position",
+            "Nucleotide_Seq",
             "File_ID",
         ],
     )
@@ -164,8 +167,8 @@ def reassign_pangene_categories(df_pangene_summary, df_gene_presence_binary):
 
 def prepare_qcqa(all_locustag_df, df_pangene_summary, df_gene_presence_binary, df_gene_presence_locustag):
     logging.info(f"all_locustag_df shape: {all_locustag_df.shape}")
-    logging.info("Calculating: Nucleotide lengths")
-    all_locustag_df["Nucleotide_Len"] = all_locustag_df["Nucleotide_Seq"].str.len()
+    # logging.info("Calculating: Nucleotide lengths")
+    # all_locustag_df["Nucleotide_Len"] = all_locustag_df["Nucleotide_Seq"].str.len()
     logging.info("Calculating: Gene_ID counts")
     all_genes_df = all_locustag_df["Gene_ID"].value_counts()
     logging.info("Calculating: Gene_ID counts: Renaming")
