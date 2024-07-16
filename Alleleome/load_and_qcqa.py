@@ -129,7 +129,7 @@ def parse_genbank_files(df_gene_presence_locustag, gbk_folder, tmp_folder):
             "Prokka_Annotation",
             "Start_Position",
             "End_Position",
-            "Nucleotide_Seq",
+            "Nucleotide_Len",
             "File_ID",
         ],
     )
