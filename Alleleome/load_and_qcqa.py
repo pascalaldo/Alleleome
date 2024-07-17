@@ -70,10 +70,10 @@ def parse_genbank_files(df_gene_presence_locustag, gbk_folder):
 
     all_locustag_list = []
     genome_ids = list(df_gene_presence_locustag.columns)
-    genome_ids = genome_ids[:20] #DEBUGGING
     for i, genome_id in enumerate(genome_ids):
         logging.info(f"Writing genome #{i+1}/{len(genome_ids)} to fasta.")
         cur_df = df_gene_presence_locustag[genome_id]
+        cur_df = cur_df[~cur_df.isna()]
         cur_df = pd.Series(cur_df.index.values, index=cur_df)
         genbank_file_path = Path(gbk_folder) / f"{genome_id}.gbk"
         for record in SeqIO.parse(genbank_file_path, "genbank"):

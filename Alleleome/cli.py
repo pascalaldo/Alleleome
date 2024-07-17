@@ -2,7 +2,6 @@ import argparse
 import datetime
 import logging
 import os
-import cProfile
 
 from . import (
     load_and_qcqa,
@@ -40,12 +39,9 @@ def main_prepare(args):
         load_and_qcqa.load_roary_data(args.summary, args.gp_binary, args.gp_locustag)
     )
     logging.info("Processing GBK files")
-    with cProfile.Profile() as pr:
-        all_locustag_df = load_and_qcqa.parse_genbank_files(
-            df_gene_presence_locustag, args.gbk_folder,
-        )
-        pr.print_stats()
-    raise Exception("Debugging")
+    all_locustag_df = load_and_qcqa.parse_genbank_files(
+        df_gene_presence_locustag, args.gbk_folder,
+    )
     logging.info("Preparing QCQA")
     pangene_summary, all_locustag_df, all_genes_df = load_and_qcqa.prepare_qcqa(
         all_locustag_df,
