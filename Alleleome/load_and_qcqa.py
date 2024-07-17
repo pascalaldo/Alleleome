@@ -89,7 +89,7 @@ def parse_genbank_files(df_gene_presence_locustag, gbk_folder):
                     continue
                 genome_data_list.append(tag[0])  # Locus tag
                 genome_data_list.append(genome_id)  # Genome ID
-                genome_data_list.append(gene_id[0])
+                genome_data_list.append(gene_id)
                 
                 if "product" in feature.qualifiers.keys():
                     genome_data_list.append(
