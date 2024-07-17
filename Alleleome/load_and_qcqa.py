@@ -70,6 +70,7 @@ def parse_genbank_files(df_gene_presence_locustag, gbk_folder):
 
     all_locustag_list = []
     genome_ids = list(df_gene_presence_locustag.columns)
+    genome_ids = genome_ids[:20] #DEBUGGING
     for i, genome_id in enumerate(genome_ids):
         logging.info(f"Writing genome #{i+1}/{len(genome_ids)} to fasta.")
         genbank_file_path = Path(gbk_folder) / f"{genome_id}.gbk"
