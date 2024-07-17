@@ -11,7 +11,6 @@ from Bio.SeqRecord import SeqRecord
 
 def process_selected_genes(all_locustag_df, locustag_list, gene_list, out_dir, gbk_folder):
     out_dir = Path(out_dir)
-    tmp_folder = Path(tmp_folder)
     sel_locustag_df = all_locustag_df.loc[locustag_list]
     
     for gene in gene_list:
