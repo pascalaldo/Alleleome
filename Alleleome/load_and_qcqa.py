@@ -73,6 +73,8 @@ def parse_genbank_files(df_gene_presence_locustag, gbk_folder):
     genome_ids = genome_ids[:20] #DEBUGGING
     for i, genome_id in enumerate(genome_ids):
         logging.info(f"Writing genome #{i+1}/{len(genome_ids)} to fasta.")
+        cur_df = df_gene_presence_locustag[genome_id]
+        cur_df = pd.Series(cur_df.index.values, index=cur_df)
         genbank_file_path = Path(gbk_folder) / f"{genome_id}.gbk"
         for record in SeqIO.parse(genbank_file_path, "genbank"):
             for feature in record.features:
@@ -80,7 +82,7 @@ def parse_genbank_files(df_gene_presence_locustag, gbk_folder):
                 tag = feature.qualifiers.get("locus_tag")
                 if not tag:
                     continue
-                gene_id = df_gene_presence_locustag.index[df_gene_presence_locustag[genome_id] == tag[0]]
+                gene_id = cur_df[tag[0]]
                 if len(gene_id) != 1:
                     continue
                 genome_data_list.append(tag[0])  # Locus tag
