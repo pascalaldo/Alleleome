@@ -44,7 +44,7 @@ def main_prepare(args):
     #     df_gene_presence_locustag, args.gbk_folder,
     # )
     cProfile.run('load_and_qcqa.parse_genbank_files(df_gene_presence_locustag, args.gbk_folder)')
-    raise Exception("Debugging)
+    raise Exception("Debugging")
     logging.info("Preparing QCQA")
     pangene_summary, all_locustag_df, all_genes_df = load_and_qcqa.prepare_qcqa(
         all_locustag_df,
