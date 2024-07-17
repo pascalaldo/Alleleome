@@ -82,8 +82,10 @@ def parse_genbank_files(df_gene_presence_locustag, gbk_folder):
                 tag = feature.qualifiers.get("locus_tag")
                 if not tag:
                     continue
-                gene_id = cur_df[tag[0]]
-                if len(gene_id) != 1:
+                try:
+                    gene_id = cur_df[tag[0]]
+                # if len(gene_id) != 1:
+                except:
                     continue
                 genome_data_list.append(tag[0])  # Locus tag
                 genome_data_list.append(genome_id)  # Genome ID
