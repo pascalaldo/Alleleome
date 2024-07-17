@@ -120,7 +120,7 @@ def process_selected_genes(all_locustag_df, locustag_list, gene_list, out_dir, g
         # process_gene(gene, sel_locustag_df, fna_path, faa_path, tmp_folder)
     genome_ids = sel_locustag_df["Genome_ID"].unique()
     for i, genome_id in enumerate(genome_ids):
-        print(f"Writing genome #{i+1}/{len(genome_ids)} to fasta.")
+        logging.info(f"Writing genome #{i+1}/{len(genome_ids)} to fasta.")
         genbank_file_path = Path(gbk_folder) / f"{genome_id}.gbk"
         for record in SeqIO.parse(genbank_file_path, "genbank"):
             for feature in record.features:
