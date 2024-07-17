@@ -40,7 +40,7 @@ def main_prepare(args):
     )
     logging.info("Processing GBK files")
     all_locustag_df = load_and_qcqa.parse_genbank_files(
-        df_gene_presence_locustag, args.gbk_folder, args.tmp_folder,
+        df_gene_presence_locustag, args.gbk_folder,
     )
     logging.info("Preparing QCQA")
     pangene_summary, all_locustag_df, all_genes_df = load_and_qcqa.prepare_qcqa(
@@ -76,7 +76,7 @@ def main_fasta(args):
     )
     all_locustag_df = load_and_qcqa.load(args.all_locustag)
     write_fasta.process_selected_genes(
-        all_locustag_df, locustag_list, gene_list, args.out_dir, args.tmp_folder
+        all_locustag_df, locustag_list, gene_list, args.out_dir, args.gbk_folder
     )
     load_and_qcqa.write_gene_list(gene_list, args.gene_list)
 
@@ -169,18 +169,12 @@ def main():
         required=True,
         help=("Path to the updated summary."),
     )
-    parsers["prepare"].add_argument(
-        "--gbk_folder",
-        type=str,
-        required=True,
-        help="Folder containing GenBank files.",
-    )
     for x in ["prepare", "fasta"]:
         parsers[x].add_argument(
-            "--tmp_folder",
+            "--gbk_folder",
             type=str,
             required=True,
-            help="Temporary folder to store interim fasta files.",
+            help="Folder containing GenBank files.",
         )
         parsers[x].add_argument(
             "--all_locustag",
