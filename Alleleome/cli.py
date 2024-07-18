@@ -8,8 +8,7 @@ from . import (
     write_fasta,
     consensus_sequence,
     sequence_alignment,
-    amino_acid_variants_parallel,
-    codon_mutations,
+    mutations_parallel,
 )
 from .preplot import (
     dominant_aa,
@@ -96,8 +95,8 @@ def main_process_gene(args):
 
 def main_analyze(args):
     gene_list = load_and_qcqa.load_gene_list(args.gene_list)
-    amino_acid_variants_parallel.generate_amino_acid_vars(gene_list, args.out_dir, args.aa_vars, p=args.p)
-    codon_mutations.codon_mut(gene_list, args.out_dir, args.codon_muts)
+    mutations_parallel.generate_amino_acid_vars(gene_list, args.out_dir, args.aa_vars, p=args.p)
+    mutations_parallel.codon_mut(gene_list, args.out_dir, args.codon_muts, p=args.p)
 
 
 def main_preplot(args):
