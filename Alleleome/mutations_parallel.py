@@ -26,7 +26,7 @@ def generate_amino_acid_vars(gene_list, out_dir, aa_vars_path, p=1):
 
 def codon_mut(gene_list, out_dir, codon_mut_path, p=1):
     gene_list_len = len(gene_list)
-    chunksize = max(min(gene_list_len // p, 50), 1)
+    chunksize = max(min(gene_list_len // p, 5), 1)
     logging.info(f"Parallel chunksize = {chunksize}")
     counter = 0
 
