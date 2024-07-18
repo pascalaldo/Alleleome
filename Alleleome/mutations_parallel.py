@@ -13,12 +13,7 @@ def generate_amino_acid_vars(gene_list, out_dir, aa_vars_path, p=1):
     chunksize = max(min(gene_list_len // p, 50), 1)
     logging.info(f"Parallel chunksize = {chunksize}")
     counter = 0
-
-    aa_vars_path = Path(aa_vars_path)
-    if aa_vars_path.is_file():
-        logging.warn("Skipping generate_amino_acid_vars, file already present.")
-        return
-
+    
     with open(aa_vars_path, "w") as f:
         with Pool(p) as pool:
             for result in pool.imap_unordered(
