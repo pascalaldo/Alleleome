@@ -186,9 +186,9 @@ def generate_amino_acid_vars(
                     query_info = query_info.split("|", 1)
                     query_description = query_info[0]
                     query_description = query_description.split(" ", 1)
-                    query_id = query_description[0]
-                    query_desc = query_description[1]
-                    GCF_id = query_info[1]
+                    query_id = str(query_description[0])
+                    query_desc = str(query_description[1])
+                    gcf_id = str(query_info[1])
                     # Won't find differences in the beginning of genes since doesn't compare query vs subject start and end match positions.
                     ins_d = _get_ins_d(
                         blast_subject_str, blast_query_str, subject_match_start_pos
@@ -210,7 +210,7 @@ def generate_amino_acid_vars(
                             "Identity": num_indentities,
                             "Query_locus_tag": query_id,
                             "Query_description": query_desc,
-                            "GCF_id": GCF_id,
+                            "GCF_id": gcf_id,
                             "Sequence_type": "Variant",
                         }  # Can't use columns due to diff parsing of 'AA range' input
                         # all_mutations.append(mut_data)
@@ -236,7 +236,7 @@ def generate_amino_acid_vars(
                             "Identity": num_indentities,
                             "Query_locus_tag": query_id,
                             "Query_description": query_desc,
-                            "GCF_id": GCF_id,
+                            "GCF_id": gcf_id,
                             "Sequence_type": "Variant",
                         }  # Can't use columns due to diff parsing of 'AA range' input
                         # all_mutations.append(mut_data)
@@ -267,7 +267,7 @@ def generate_amino_acid_vars(
                             "Identity": num_indentities,
                             "Query_locus_tag": query_id,
                             "Query_description": query_desc,
-                            "GCF_id": GCF_id,
+                            "GCF_id": gcf_id,
                             "Sequence_type": "Variant",
                         }  # Can't use columns due to diff parsing of 'AA range' input
                         # all_mutations.append(mut_data)

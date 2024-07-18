@@ -95,7 +95,7 @@ def main_process_gene(args):
 
 def main_analyze(args):
     gene_list = load_and_qcqa.load_gene_list(args.gene_list)
-    # mutations_parallel.generate_amino_acid_vars(gene_list, args.out_dir, args.aa_vars, p=args.p)
+    mutations_parallel.generate_amino_acid_vars(gene_list, args.out_dir, args.aa_vars, p=args.p)
     mutations_parallel.codon_mut(gene_list, args.out_dir, args.codon_muts, p=args.p)
 
 

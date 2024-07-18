@@ -42,8 +42,4 @@ def codon_mut(gene_list, out_dir, codon_mut_path, p=1):
                 logging.info(f"Processing CM result of gene #{counter+1}/{gene_list_len}")
                 df = pd.DataFrame(result)
                 df.to_csv(f, header=(counter == 0), index=False)
-                f.flush()
-                del result
-                del df
-                gc.collect()
                 counter += 1
