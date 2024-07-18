@@ -3,6 +3,7 @@ import logging
 from . import amino_acid_variants_parallel_helper
 from itertools import repeat
 from multiprocessing import Pool
+import pandas as pd
 
 
 def generate_amino_acid_vars(gene_list, out_dir, aa_vars_path, p=8):
