@@ -88,7 +88,7 @@ def codon_mut_(
     blast_output_file = blast_output_dir / (
         "nucleotide_blast_out_" + gene + ".xml.gz"
     )
-    all_mutations = []
+    all_mutations = [] # Should probably change this to a dictionary of lists for memory efficiency
 
     with gzip.open(blast_output_file, "rt") as f:
         for record in NCBIXML.parse(f):

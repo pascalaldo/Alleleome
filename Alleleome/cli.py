@@ -232,7 +232,7 @@ def main():
             required=True,
             help="Path to gene_list.txt file.",
         )
-    for x in ["process", "analyze"]:
+    for x in ["process", "analyze", "preplot"]:
         parsers[x].add_argument(
             "-p",
             type=int,
