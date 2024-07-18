@@ -150,6 +150,7 @@ def generate_amino_acid_vars(args):
 def generate_amino_acid_vars_(
     gene, out_dir
 ):
+    out_dir = Path(out_dir)
     blast_output_dir = (
         out_dir / "output" / gene
     )
