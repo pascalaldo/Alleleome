@@ -109,7 +109,7 @@ def codon_mut_(
             query_description = query_description.split(" ", 1)
             query_id = query_description[0]
             query_desc = query_description[1]
-            GCF_id = query_info[1]
+            gcf_id = query_info[1]
             blast_query_str = blast_query_str.replace("-", "N")
             blast_query_str = Seq(blast_query_str)
             blast_subject_str = blast_subject_str.replace("-", "N")
@@ -127,31 +127,31 @@ def codon_mut_(
                     if aa_s == aa_q:
                         mut_data = {
                             "Gene": gene,
-                            "Cons_codon": codon_s,
-                            "Query_codon": codon_q,
+                            "Cons_codon": str(codon_s),
+                            "Query_codon": str(codon_q),
                             "Codon_position": j,
-                            "Cons_aa": aa_s,
-                            "Query_aa": aa_q,
+                            "Cons_aa": str(aa_s),
+                            "Query_aa": str(aa_q),
                             "AA_mutation_effect": "Synonymous",
-                            "Cons_locus_tag": ref_id,
-                            "Query_locus_tag": query_id,
-                            "Query_description": query_desc,
-                            "GCF_id": GCF_id,
+                            "Cons_locus_tag": str(ref_id),
+                            "Query_locus_tag": str(query_id),
+                            "Query_description": str(query_desc),
+                            "GCF_id": str(gcf_id),
                         }  # Can't use columns due to diff parsing of 'AA range' input
                         all_mutations.append(mut_data)
                     else:
                         mut_data = {
                             "Gene": gene,
-                            "Cons_codon": codon_s,
-                            "Query_codon": codon_q,
+                            "Cons_codon": str(codon_s),
+                            "Query_codon": str(codon_q),
                             "Codon_position": j,
-                            "Cons_aa": aa_s,
-                            "Query_aa": aa_q,
+                            "Cons_aa": str(aa_s),
+                            "Query_aa": str(aa_q),
                             "AA_mutation_effect": "Non-synonymous",
-                            "Cons_locus_tag": ref_id,
-                            "Query_locus_tag": query_id,
-                            "Query_description": query_desc,
-                            "GCF_id": GCF_id,
+                            "Cons_locus_tag": str(ref_id),
+                            "Query_locus_tag": str(query_id),
+                            "Query_description": str(query_desc),
+                            "GCF_id": str(gcf_id),
                         }  # Can't use columns due to diff parsing of 'AA range' input
                         all_mutations.append(mut_data)
                 else:

@@ -13,7 +13,7 @@ def generate_amino_acid_vars(gene_list, out_dir, aa_vars_path, p=1):
     chunksize = max(min(gene_list_len // p, 50), 1)
     logging.info(f"Parallel chunksize = {chunksize}")
     counter = 0
-    
+
     with open(aa_vars_path, "w") as f:
         with Pool(p) as pool:
             for result in pool.imap_unordered(
@@ -43,6 +43,7 @@ def codon_mut(gene_list, out_dir, codon_mut_path, p=1):
                 df = pd.DataFrame(result)
                 df.to_csv(f, header=(counter == 0), index=False)
                 f.flush()
+                del result
                 del df
                 gc.collect()
                 counter += 1
