@@ -79,7 +79,7 @@ def write_mut_data(file_data, mut_data):
     df = pd.DataFrame([mut_data])
     f = file_data[0]
     first_line = file_data[1]
-    df.write_csv(f, header=first_line, index=False)
+    df.to_csv(f, header=first_line, index=False)
     if first_line:
         file_data[1] = False
 
