@@ -14,7 +14,7 @@ def generate_amino_acid_vars(gene_list, out_dir, aa_vars_path, p=8):
     with open(aa_vars_path, "w") as f:
         with Pool(p) as pool:
             for result in pool.imap_unordered(
-                amino_acid_variants.generate_amino_acid_vars,
+                amino_acid_variants_parallel_helper.generate_amino_acid_vars,
                 zip(gene_list, repeat(out_dir)),
                 chunksize=chunksize,
             ):

@@ -143,7 +143,11 @@ def _get_consecutive_pos_l(pos_l):
 mut_pos_l = [1, 4, 5, 7, 8, 9, 22]
 assert _get_consecutive_pos_l(mut_pos_l) == [[1], [4, 5], [7, 8, 9], [22]]
 
-def generate_amino_acid_vars(
+def generate_amino_acid_vars(args):
+    gene, out_dir = args
+    return generate_amino_acid_vars_(gene, out_dir)
+
+def generate_amino_acid_vars_(
     gene, out_dir
 ):
     blast_output_dir = (
