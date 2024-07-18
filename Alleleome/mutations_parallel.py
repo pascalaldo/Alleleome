@@ -4,6 +4,8 @@ from . import amino_acid_variants_parallel, codon_mutations_parallel
 from itertools import repeat
 from multiprocessing import Pool
 import pandas as pd
+import gc
+from pathlib import Path
 
 
 def generate_amino_acid_vars(gene_list, out_dir, aa_vars_path, p=1):
@@ -11,6 +13,11 @@ def generate_amino_acid_vars(gene_list, out_dir, aa_vars_path, p=1):
     chunksize = max(min(gene_list_len // p, 50), 1)
     logging.info(f"Parallel chunksize = {chunksize}")
     counter = 0
+
+    aa_vars_path = Path(aa_vars_path)
+    if aa_vars_path.is_file():
+        logging.warn("Skipping generate_amino_acid_vars, file already present.")
+        return
 
     with open(aa_vars_path, "w") as f:
         with Pool(p) as pool:
@@ -40,4 +47,7 @@ def codon_mut(gene_list, out_dir, codon_mut_path, p=1):
                 logging.info(f"Processing CM result of gene #{counter+1}/{gene_list_len}")
                 df = pd.DataFrame(result)
                 df.to_csv(f, header=(counter == 0), index=False)
+                f.flush()
+                del df
+                gc.collect()
                 counter += 1

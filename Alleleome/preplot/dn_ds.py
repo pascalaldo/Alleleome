@@ -24,9 +24,9 @@ def calculate_dn_ds(codon_muts_path, dn_ds_path, dn_ds_json_path):
     )
 
     # Remove rows where 'Query_codon' contains 'N'
-    df_without_n = df[~df["Query_codon"].str.contains("N")]
+    df = df[~df["Query_codon"].str.contains("N")]
     df_per_gene = (
-        df_without_n.groupby(["Gene", "AA_mutation_effect"])["GCF_id"]
+        df.groupby(["Gene", "AA_mutation_effect"])["GCF_id"]
         .sum()
         .reset_index(name="Total_per_gene")
     )
