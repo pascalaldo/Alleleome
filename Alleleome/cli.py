@@ -8,7 +8,7 @@ from . import (
     write_fasta,
     consensus_sequence,
     sequence_alignment,
-    amino_acid_variants,
+    amino_acid_variants_parallel,
     codon_mutations,
 )
 from .preplot import (
@@ -96,7 +96,7 @@ def main_process_gene(args):
 
 def main_analyze(args):
     gene_list = load_and_qcqa.load_gene_list(args.gene_list)
-    amino_acid_variants.generate_amino_acid_vars(gene_list, args.out_dir, args.aa_vars)
+    amino_acid_variants_parallel.generate_amino_acid_vars(gene_list, args.out_dir, args.aa_vars, p=args.p)
     codon_mutations.codon_mut(gene_list, args.out_dir, args.codon_muts)
 
 
@@ -233,13 +233,14 @@ def main():
             required=True,
             help="Path to gene_list.txt file.",
         )
-    parsers["process"].add_argument(
-        "-p",
-        type=int,
-        required=False,
-        default=1,
-        help="Number of parallel processes to spawn.",
-    )
+    for x in ["process", "analyze"]:
+        parsers[x].add_argument(
+            "-p",
+            type=int,
+            required=False,
+            default=1,
+            help="Number of parallel processes to spawn.",
+        )
     parsers["preplot"].add_argument(
         "--dominant_aa",
         type=str,
