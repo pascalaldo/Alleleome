@@ -14,6 +14,7 @@ def generate_amino_acid_vars(gene_list, out_dir, aa_vars_path, p=1):
     logging.info(f"Parallel chunksize = {chunksize}")
     counter = 0
 
+
     with open(aa_vars_path, "w") as f:
         with Pool(p) as pool:
             for result in pool.imap_unordered(
@@ -22,6 +23,9 @@ def generate_amino_acid_vars(gene_list, out_dir, aa_vars_path, p=1):
                 chunksize=chunksize,
             ):
                 logging.info(f"Processing AAV result of gene #{counter+1}/{gene_list_len}")
+                if not result:
+                    gene_list_len -= 1
+                    continue
                 df = pd.DataFrame(result)
                 df.to_csv(f, header=(counter == 0), index=False)
                 counter += 1
@@ -40,6 +44,9 @@ def codon_mut(gene_list, out_dir, codon_mut_path, p=1):
                 chunksize=chunksize,
             ):
                 logging.info(f"Processing CM result of gene #{counter+1}/{gene_list_len}")
+                if not result:
+                    gene_list_len -= 1
+                    continue
                 df = pd.DataFrame(result)
                 df.to_csv(f, header=(counter == 0), index=False)
                 del result

@@ -25,6 +25,9 @@ def find_dominant_aa(gene_list, out_dir, dominant_aa_path, p=1):
                 chunksize=chunksize,
             ):
                 logging.info(f"Processing FDA result of gene #{counter+1}/{gene_list_len}")
+                if not result:
+                    gene_list_len -= 1
+                    continue
                 df = pd.DataFrame(result)
                 df.to_csv(f, header=(counter == 0), index=False)
                 counter += 1
