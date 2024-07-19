@@ -20,7 +20,7 @@ def find_dominant_aa(gene_list, out_dir, dominant_aa_path, p=1):
         # Process each alignment file
         with Pool(p) as pool:
             for result in pool.imap_unordered(
-                find_dominant_aa_,
+                find_dominant_aa_h,
                 zip(gene_list, repeat(out_dir)),
                 chunksize=chunksize,
             ):
@@ -34,7 +34,9 @@ def find_dominant_aa(gene_list, out_dir, dominant_aa_path, p=1):
     # consensus_dominant_aa_df.to_csv(dominant_aa_path) #out_dir / 'final_core_consensus_dominant_aa_count_df.csv'
     logging.info("Finishing: preplot: find_dominant_aa")
 
-
+def find_dominant_aa_h(args):
+    gene, out_dir = args
+    return find_dominant_aa_(gene, out_dir)
 
 def find_dominant_aa_(gene, out_dir):
     out_dir = Path(out_dir)
