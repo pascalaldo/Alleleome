@@ -101,7 +101,7 @@ def main_analyze(args):
 
 def main_preplot(args):
     gene_list = load_and_qcqa.load_gene_list(args.gene_list)
-    dominant_aa.find_dominant_aa(gene_list, args.out_dir, args.dominant_aa)
+    dominant_aa.find_dominant_aa(gene_list, args.out_dir, args.dominant_aa, p=args.p)
     var_aa.find_variable_aa(args.aa_vars, args.variable_aa)
     var_aa.find_dominant_var_all(
         args.variable_aa,

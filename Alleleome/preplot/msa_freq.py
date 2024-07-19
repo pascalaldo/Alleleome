@@ -47,7 +47,7 @@ def calculate_msa_freq(gene_list, out_dir, aa_freq_dir):
             data_for_json[i+1] = {}
             for amino_acid, count in pos_counts.items():
                 if count > 0:
-                    data_for_json[i+1][amino_acid] = [count, round(count/n_sequences, 2)]
+                    data_for_json[i+1][amino_acid] = [count, round(100.0*count/n_sequences, 2)]
 
         aa_freq_path = aa_freq_dir / gene
         aa_freq_path.mkdir(parents=True, exist_ok=True)
