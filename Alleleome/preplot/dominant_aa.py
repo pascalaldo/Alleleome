@@ -5,6 +5,8 @@ from collections import Counter
 import logging
 import gzip
 from multiprocessing import Pool
+from itertools import repeat
+
 
 def find_dominant_aa(gene_list, out_dir, dominant_aa_path, p=1):
     logging.info("Starting: preplot: find_dominant_aa")
