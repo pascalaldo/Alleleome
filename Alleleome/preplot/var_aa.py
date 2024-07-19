@@ -81,7 +81,7 @@ def find_dominant_var_all(
     df_norm.to_csv(filt_norm_path)
 
     # for getting the single gene details
-    for gene, group in df.groupby('Gene'):
+    for gene, group in df_norm.groupby('Gene'):
         if not gene in gene_list:
             continue
         gene_path = dom_var_out_dir / gene
