@@ -60,6 +60,8 @@ def find_dominant_var_all(
     )
 
     df_dom_var = pd.concat([df_var, df_dom]).sort_values("Gene")
+    df_dom_var.reset_index(inplace=True)
+    df_dom_var.drop(columns=["index"], inplace=True)
 
     df_dom_var.to_csv(dom_var_path)
 
