@@ -9,7 +9,18 @@ def calculate_dn_ds(codon_muts_path, dn_ds_path, dn_ds_json_path):
     logging.info("Starting: preplot: calculate_dn_ds")
 
     logging.info("Executing: calcualte_dn_ds: read_csv")
-    df = pd.read_csv(codon_muts_path)
+    df = pd.read_csv(
+        codon_muts_path,
+        dtype=str,
+        usecols=[
+            "Gene",
+            "Cons_codon",
+            "Query_codon",
+            "Codon_position",
+            "AA_mutation_effect",
+            "GCF_id",
+        ],
+    )
     logging.info("Executing: calcualte_dn_ds: groupby")
     df = (
         df.groupby(
@@ -78,11 +89,13 @@ def calculate_dn_ds(codon_muts_path, dn_ds_path, dn_ds_json_path):
         x: df_per_gene.loc[
             df_per_gene["dN/dS Group"] == x,
             ["Synonymous_count", "Non_synonymous_count"],
-        ].to_numpy().tolist()
+        ]
+        .to_numpy()
+        .tolist()
         for x in ["dNdS_greater_than_one", "dNdS_equal_to_one", "dNdS_less_than_one"]
     }
     logging.info("Executing: calcualte_dn_ds: json_dump")
-    with open(dn_ds_json_path, 'w') as f:
+    with open(dn_ds_json_path, "w") as f:
         json.dump(json_dict, f)
 
     logging.info("Finishing: preplot: calculate_dn_ds")

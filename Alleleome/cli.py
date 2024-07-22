@@ -101,6 +101,7 @@ def main_analyze(args):
 
 def main_preplot(args):
     gene_list = load_and_qcqa.load_gene_list(args.gene_list)
+    dn_ds.calculate_dn_ds(args.codon_muts, args.dn_ds, args.dn_ds_json)
     dominant_aa.find_dominant_aa(gene_list, args.out_dir, args.dominant_aa, p=args.p)
     var_aa.find_variable_aa(args.aa_vars, args.variable_aa)
     var_aa.find_dominant_var_all(
@@ -112,7 +113,6 @@ def main_preplot(args):
         args.dom_var_out_dir,
         gene_list,
     )
-    dn_ds.calculate_dn_ds(args.codon_muts, args.dn_ds, args.dn_ds_json)
     var_aa.dom_var_histogram(args.filt_norm, args.hist)
     msa_freq.calculate_msa_freq(gene_list, args.out_dir, args.aa_freq_dir)
 
