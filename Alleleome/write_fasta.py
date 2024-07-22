@@ -13,7 +13,7 @@ def process_selected_genes(all_locustag_df, locustag_list, gene_list, out_dir, g
     out_dir = Path(out_dir)
     sel_locustag_df = all_locustag_df.loc[locustag_list]
     
-    sel_gene_list = gene_list[:]
+    sel_gene_list = gene_list.to_list()
 
     for gene in gene_list:
         gene_dir = out_dir / "input" / gene
