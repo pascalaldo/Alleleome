@@ -101,20 +101,20 @@ def main_analyze(args):
 
 def main_preplot(args):
     gene_list = load_and_qcqa.load_gene_list(args.gene_list)
-    # dn_ds.calculate_dn_ds(args.codon_muts, args.dn_ds, args.dn_ds_json)
-    # dominant_aa.find_dominant_aa(gene_list, args.out_dir, args.dominant_aa, p=args.p)
-    # var_aa.find_variable_aa(args.aa_vars, args.variable_aa)
-    # var_aa.find_dominant_var_all(
-    #     args.variable_aa,
-    #     args.dominant_aa,
-    #     args.dom_var,
-    #     args.gaps,
-    #     args.filt_norm,
-    #     args.dom_var_out_dir,
-    #     gene_list,
-    # )
+    dn_ds.calculate_dn_ds(args.codon_muts, args.dn_ds, args.dn_ds_json)
+    dominant_aa.find_dominant_aa(gene_list, args.out_dir, args.dominant_aa, p=args.p)
+    var_aa.find_variable_aa(args.aa_vars, args.variable_aa)
+    var_aa.find_dominant_var_all(
+        args.variable_aa,
+        args.dominant_aa,
+        args.dom_var,
+        args.gaps,
+        args.filt_norm,
+        args.dom_var_out_dir,
+        gene_list,
+    )
     var_aa.dom_var_histogram(args.filt_norm, args.hist)
-    # msa_freq.calculate_msa_freq(gene_list, args.out_dir, args.aa_freq_dir)
+    msa_freq.calculate_msa_freq(gene_list, args.out_dir, args.aa_freq_dir)
 
 def ask_select_mode(args):
     logging.error("Please select a mode, see --help for more info.")
