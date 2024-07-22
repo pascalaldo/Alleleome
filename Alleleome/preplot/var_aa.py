@@ -109,8 +109,8 @@ def dom_var_histogram(filt_norm_path, hist_path):
     variant_counts, variant_bins = np.histogram(df.loc[df["Sequence_type"] == "Variant", "Genome_count_norm"], bins=bins)
 
     # Preparing data for Highcharts
-    dominant_data_highcharts = [{'x': f"{x:.2f}", 'y': int(y)} for x, y in zip(dominant_bins, dominant_counts)]
-    variant_data_highcharts = [{'x': f"{x:.2f}", 'y': int(y)} for x, y in zip(variant_bins, variant_counts)]
+    dominant_data_highcharts = [{'x': float(x), 'y': int(y)} for x, y in zip(dominant_bins, dominant_counts)]
+    variant_data_highcharts = [{'x': float(x), 'y': int(y)} for x, y in zip(variant_bins, variant_counts)]
 
     # For plotting repat last y values
     dominant_data_highcharts.append({'x': 1.0, 'y': dominant_data_highcharts[-1]['y']})
