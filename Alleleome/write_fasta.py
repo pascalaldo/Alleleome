@@ -13,16 +13,18 @@ def process_selected_genes(all_locustag_df, locustag_list, gene_list, out_dir, g
     out_dir = Path(out_dir)
     sel_locustag_df = all_locustag_df.loc[locustag_list]
     
+    sel_gene_list = gene_list[:]
+
     for gene in gene_list:
         gene_dir = out_dir / "input" / gene
         gene_dir.mkdir(parents=True, exist_ok=True)
         fna_path = gene_dir / "pan_genes.fna"
         faa_path = gene_dir / "pan_genes.faa"
-        if fna_path.is_file():
-            fna_path.unlink()
-        if faa_path.is_file():
-            faa_path.unlink()
+        if fna_path.is_file() and faa_path.is_file():
+            sel_gene_list.remove(gene)
         # process_gene(gene, sel_locustag_df, fna_path, faa_path, tmp_folder)
+    if not sel_gene_list:
+        return
     genome_ids = sel_locustag_df["Genome_ID"].unique()
     for i, genome_id in enumerate(genome_ids):
         logging.info(f"Writing genome #{i+1}/{len(genome_ids)} to fasta.")
@@ -38,7 +40,7 @@ def process_selected_genes(all_locustag_df, locustag_list, gene_list, out_dir, g
                 except:
                     continue
                 gene_id = str(locustag_info["Gene_ID"])
-                if not gene_id in gene_list:
+                if not gene_id in sel_gene_list:
                     continue
                 
                 annotation = locustag_info["Prokka_Annotation"]
